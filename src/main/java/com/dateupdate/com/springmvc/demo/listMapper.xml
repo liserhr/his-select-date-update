@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dateupdate.com.springmvc.demo.listMapper">
+  <resultMap id="BaseResultMap" type="com.dateupdate.com.springmvc.demo.list">
+    <id column="patient_no" jdbcType="VARCHAR" property="patientNo" />
+    <id column="department_id" jdbcType="INTEGER" property="departmentId" />
+    <id column="image_index" jdbcType="INTEGER" property="imageIndex" />
+    <result column="operator_id" jdbcType="INTEGER" property="operatorId" />
+    <result column="operate_date" jdbcType="TIMESTAMP" property="operateDate" />
+    <result column="bill_no" jdbcType="VARCHAR" property="billNo" />
+    <result column="item_name" jdbcType="VARCHAR" property="itemName" />
+    <result column="format" jdbcType="VARCHAR" property="format" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.dateupdate.com.springmvc.demo.list">
+    <result column="image_data" jdbcType="LONGVARBINARY" property="imageData" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    patient_no, department_id, image_index, operator_id, operate_date, bill_no, item_name, 
+    format
+  </sql>
+  <sql id="Blob_Column_List">
+    image_data
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="com.dateupdate.com.springmvc.demo.listKey" resultMap="ResultMapWithBLOBs">
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from pe_report_department_images
+    where patient_no = #{patientNo,jdbcType=VARCHAR}
+      and department_id = #{departmentId,jdbcType=INTEGER}
+      and image_index = #{imageIndex,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="com.dateupdate.com.springmvc.demo.listKey">
+    delete from pe_report_department_images
+    where patient_no = #{patientNo,jdbcType=VARCHAR}
+      and department_id = #{departmentId,jdbcType=INTEGER}
+      and image_index = #{imageIndex,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.dateupdate.com.springmvc.demo.list">
+    insert into pe_report_department_images (patient_no, department_id, image_index, 
+      operator_id, operate_date, bill_no, 
+      item_name, format, image_data
+      )
+    values (#{patientNo,jdbcType=VARCHAR}, #{departmentId,jdbcType=INTEGER}, #{imageIndex,jdbcType=INTEGER}, 
+      #{operatorId,jdbcType=INTEGER}, #{operateDate,jdbcType=TIMESTAMP}, #{billNo,jdbcType=VARCHAR}, 
+      #{itemName,jdbcType=VARCHAR}, #{format,jdbcType=VARCHAR}, #{imageData,jdbcType=LONGVARBINARY}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.dateupdate.com.springmvc.demo.list">
+    insert into pe_report_department_images
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="patientNo != null">
+        patient_no,
+      </if>
+      <if test="departmentId != null">
+        department_id,
+      </if>
+      <if test="imageIndex != null">
+        image_index,
+      </if>
+      <if test="operatorId != null">
+        operator_id,
+      </if>
+      <if test="operateDate != null">
+        operate_date,
+      </if>
+      <if test="billNo != null">
+        bill_no,
+      </if>
+      <if test="itemName != null">
+        item_name,
+      </if>
+      <if test="format != null">
+        format,
+      </if>
+      <if test="imageData != null">
+        image_data,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="patientNo != null">
+        #{patientNo,jdbcType=VARCHAR},
+      </if>
+      <if test="departmentId != null">
+        #{departmentId,jdbcType=INTEGER},
+      </if>
+      <if test="imageIndex != null">
+        #{imageIndex,jdbcType=INTEGER},
+      </if>
+      <if test="operatorId != null">
+        #{operatorId,jdbcType=INTEGER},
+      </if>
+      <if test="operateDate != null">
+        #{operateDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="billNo != null">
+        #{billNo,jdbcType=VARCHAR},
+      </if>
+      <if test="itemName != null">
+        #{itemName,jdbcType=VARCHAR},
+      </if>
+      <if test="format != null">
+        #{format,jdbcType=VARCHAR},
+      </if>
+      <if test="imageData != null">
+        #{imageData,jdbcType=LONGVARBINARY},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.dateupdate.com.springmvc.demo.list">
+    update pe_report_department_images
+    <set>
+      <if test="operatorId != null">
+        operator_id = #{operatorId,jdbcType=INTEGER},
+      </if>
+      <if test="operateDate != null">
+        operate_date = #{operateDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="billNo != null">
+        bill_no = #{billNo,jdbcType=VARCHAR},
+      </if>
+      <if test="itemName != null">
+        item_name = #{itemName,jdbcType=VARCHAR},
+      </if>
+      <if test="format != null">
+        format = #{format,jdbcType=VARCHAR},
+      </if>
+      <if test="imageData != null">
+        image_data = #{imageData,jdbcType=LONGVARBINARY},
+      </if>
+    </set>
+    where patient_no = #{patientNo,jdbcType=VARCHAR}
+      and department_id = #{departmentId,jdbcType=INTEGER}
+      and image_index = #{imageIndex,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.dateupdate.com.springmvc.demo.list">
+    update pe_report_department_images
+    set operator_id = #{operatorId,jdbcType=INTEGER},
+      operate_date = #{operateDate,jdbcType=TIMESTAMP},
+      bill_no = #{billNo,jdbcType=VARCHAR},
+      item_name = #{itemName,jdbcType=VARCHAR},
+      format = #{format,jdbcType=VARCHAR},
+      image_data = #{imageData,jdbcType=LONGVARBINARY}
+    where patient_no = #{patientNo,jdbcType=VARCHAR}
+      and department_id = #{departmentId,jdbcType=INTEGER}
+      and image_index = #{imageIndex,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.dateupdate.com.springmvc.demo.list">
+    update pe_report_department_images
+    set operator_id = #{operatorId,jdbcType=INTEGER},
+      operate_date = #{operateDate,jdbcType=TIMESTAMP},
+      bill_no = #{billNo,jdbcType=VARCHAR},
+      item_name = #{itemName,jdbcType=VARCHAR},
+      format = #{format,jdbcType=VARCHAR}
+    where patient_no = #{patientNo,jdbcType=VARCHAR}
+      and department_id = #{departmentId,jdbcType=INTEGER}
+      and image_index = #{imageIndex,jdbcType=INTEGER}
+  </update>
+</mapper>
