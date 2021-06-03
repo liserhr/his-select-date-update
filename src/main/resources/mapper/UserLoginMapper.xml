@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dateupdate.com.springmvc.mapper.UserLoginMapper">
+    <resultMap id="UserLogin" type="com.dateupdate.com.springmvc.model.UserLoginUP">
+        <result column="login_name" jdbcType="VARCHAR" property="username"/>
+        <result column="password" jdbcType="VARCHAR" property="password"/>
+        <result column="user_name" jdbcType="VARCHAR" property="name"/>
+    </resultMap>
+
+    <select id="selectPassword" parameterType="java.lang.String" resultMap="UserLogin">
+        SELECT login_name,password,user_name FROM acc_users where login_name = #{id}
+    </select>
+
+</mapper>

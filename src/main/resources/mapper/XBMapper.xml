@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dateupdate.com.springmvc.mapper.XBMapper">
+    <resultMap id="xb" type="com.dateupdate.com.springmvc.model.BX">
+        <id  column="department_id" jdbcType="INTEGER" property="departmentId"/>
+    </resultMap>
+    <resultMap extends="xb" id="ResultMapWithBLOBs" type="com.dateupdate.com.springmvc.model.BX">
+        <result column="image_data" jdbcType="LONGVARBINARY" property="imageDate" />
+    </resultMap>
+    <resultMap id="xb1" type="com.dateupdate.com.springmvc.model.BX1">
+        <result column="photo" jdbcType="LONGVARBINARY" property="image"/>
+    </resultMap>
+    <select id="getXB" parameterType="java.lang.String" resultMap="ResultMapWithBLOBs">
+        select department_id,image_data from pe_report_department_images where patient_no = #{id}
+    </select>
+    <select id="Zjphoto" parameterType="java.lang.String" resultMap="xb1" >
+        SELECT
+	[photo]
+FROM
+	[HospDataV9].[dbo].[pe_register_photo]
+	where patient_no=#{id}
+    </select>
+</mapper>

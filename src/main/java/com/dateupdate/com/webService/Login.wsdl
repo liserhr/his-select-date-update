@@ -1,0 +1,1163 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://webservice.jiekou.com" xmlns:soapenc12="http://www.w3.org/2003/05/soap-encoding" xmlns:tns="http://webservice.jiekou.com" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap11="http://schemas.xmlsoap.org/soap/envelope/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soapenc11="http://schemas.xmlsoap.org/soap/encoding/" xmlns:soap12="http://www.w3.org/2003/05/soap-envelope">
+  <wsdl:types>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://webservice.jiekou.com">
+<xsd:element name="testWebService">
+<xsd:complexType>
+<xsd:sequence>
+<xsd:element maxOccurs="1" minOccurs="1" name="in0" nillable="true" type="xsd:string"/>
+</xsd:sequence>
+</xsd:complexType>
+</xsd:element>
+<xsd:element name="testWebServiceResponse">
+<xsd:complexType>
+<xsd:sequence>
+<xsd:element maxOccurs="1" minOccurs="1" name="out" nillable="true" type="xsd:string"/>
+</xsd:sequence>
+</xsd:complexType>
+</xsd:element>
+<xsd:element name="selecttdaJkdaRkxzl">
+<xsd:complexType>
+<xsd:sequence>
+<xsd:element maxOccurs="1" minOccurs="1" name="in0" nillable="true" type="xsd:string"/>
+</xsd:sequence>
+</xsd:complexType>
+</xsd:element>
+<xsd:element name="selecttdaJkdaRkxzlResponse">
+<xsd:complexType>
+<xsd:sequence>
+<xsd:element maxOccurs="1" minOccurs="1" name="out" nillable="true" type="xsd:string"/>
+</xsd:sequence>
+</xsd:complexType>
+</xsd:element>
+<xsd:element name="saveMzzl">
+<xsd:complexType>
+<xsd:sequence>
+<xsd:element maxOccurs="1" minOccurs="1" name="in0" nillable="true" type="xsd:string"/>
+</xsd:sequence>
+</xsd:complexType>
+</xsd:element>
+<xsd:element name="saveMzzlResponse">
+<xsd:complexType>
+<xsd:sequence>
+<xsd:element maxOccurs="1" minOccurs="1" name="out" nillable="true" type="xsd:string"/>
+</xsd:sequence>
+</xsd:complexType>
+</xsd:element>
+<xsd:element name="saveZyzlJyxq">
+<xsd:complexType>
+<xsd:sequence>
+<xsd:element maxOccurs="1" minOccurs="1" name="in0" nillable="true" type="xsd:string"/>
+</xsd:sequence>
+</xsd:complexType>
+</xsd:element>
+<xsd:element name="saveZyzlJyxqResponse">
+<xsd:complexType>
+<xsd:sequence>
+<xsd:element maxOccurs="1" minOccurs="1" name="out" nillable="true" type="xsd:string"/>
+</xsd:sequence>
+</xsd:complexType>
+</xsd:element>
+<xsd:element name="saveMzzlHyxm">
+<xsd:complexType>
+<xsd:sequence>
+<xsd:element maxOccurs="1" minOccurs="1" name="in0" nillable="true" type="xsd:string"/>
+</xsd:sequence>
+</xsd:complexType>
+</xsd:element>
+<xsd:element name="saveMzzlHyxmResponse">
+<xsd:complexType>
+<xsd:sequence>
+<xsd:element maxOccurs="1" minOccurs="1" name="out" nillable="true" type="xsd:string"/>
+</xsd:sequence>
+</xsd:complexType>
+</xsd:element>
+<xsd:element name="saveZyzlCyzd">
+<xsd:complexType>
+<xsd:sequence>
+<xsd:element maxOccurs="1" minOccurs="1" name="in0" nillable="true" type="xsd:string"/>
+</xsd:sequence>
+</xsd:complexType>
+</xsd:element>
+<xsd:element name="saveZyzlCyzdResponse">
+<xsd:complexType>
+<xsd:sequence>
+<xsd:element maxOccurs="1" minOccurs="1" name="out" nillable="true" type="xsd:string"/>
+</xsd:sequence>
+</xsd:complexType>
+</xsd:element>
+<xsd:element name="selectptsj">
+<xsd:complexType>
+<xsd:sequence>
+<xsd:element maxOccurs="1" minOccurs="1" name="in0" nillable="true" type="xsd:string"/>
+</xsd:sequence>
+</xsd:complexType>
+</xsd:element>
+<xsd:element name="selectptsjResponse">
+<xsd:complexType>
+<xsd:sequence>
+<xsd:element maxOccurs="1" minOccurs="1" name="out" nillable="true" type="xsd:string"/>
+</xsd:sequence>
+</xsd:complexType>
+</xsd:element>
+<xsd:element name="saveTpwRgin">
+<xsd:complexType>
+<xsd:sequence>
+<xsd:element maxOccurs="1" minOccurs="1" name="in0" nillable="true" type="xsd:string"/>
+</xsd:sequence>
+</xsd:complexType>
+</xsd:element>
+<xsd:element name="saveTpwRginResponse">
+<xsd:complexType>
+<xsd:sequence>
+<xsd:element maxOccurs="1" minOccurs="1" name="out" nillable="true" type="xsd:string"/>
+</xsd:sequence>
+</xsd:complexType>
+</xsd:element>
+<xsd:element name="saveZyzl">
+<xsd:complexType>
+<xsd:sequence>
+<xsd:element maxOccurs="1" minOccurs="1" name="in0" nillable="true" type="xsd:string"/>
+</xsd:sequence>
+</xsd:complexType>
+</xsd:element>
+<xsd:element name="saveZyzlResponse">
+<xsd:complexType>
+<xsd:sequence>
+<xsd:element maxOccurs="1" minOccurs="1" name="out" nillable="true" type="xsd:string"/>
+</xsd:sequence>
+</xsd:complexType>
+</xsd:element>
+<xsd:element name="saveZyzlHyxm">
+<xsd:complexType>
+<xsd:sequence>
+<xsd:element maxOccurs="1" minOccurs="1" name="in0" nillable="true" type="xsd:string"/>
+</xsd:sequence>
+</xsd:complexType>
+</xsd:element>
+<xsd:element name="saveZyzlHyxmResponse">
+<xsd:complexType>
+<xsd:sequence>
+<xsd:element maxOccurs="1" minOccurs="1" name="out" nillable="true" type="xsd:string"/>
+</xsd:sequence>
+</xsd:complexType>
+</xsd:element>
+<xsd:element name="returnCardNum">
+<xsd:complexType>
+<xsd:sequence>
+<xsd:element maxOccurs="1" minOccurs="1" name="in0" nillable="true" type="xsd:string"/>
+</xsd:sequence>
+</xsd:complexType>
+</xsd:element>
+<xsd:element name="returnCardNumResponse">
+<xsd:complexType>
+<xsd:sequence>
+<xsd:element maxOccurs="1" minOccurs="1" name="out" nillable="true" type="xsd:string"/>
+</xsd:sequence>
+</xsd:complexType>
+</xsd:element>
+<xsd:element name="saveZyzlFy">
+<xsd:complexType>
+<xsd:sequence>
+<xsd:element maxOccurs="1" minOccurs="1" name="in0" nillable="true" type="xsd:string"/>
+</xsd:sequence>
+</xsd:complexType>
+</xsd:element>
+<xsd:element name="saveZyzlFyResponse">
+<xsd:complexType>
+<xsd:sequence>
+<xsd:element maxOccurs="1" minOccurs="1" name="out" nillable="true" type="xsd:string"/>
+</xsd:sequence>
+</xsd:complexType>
+</xsd:element>
+<xsd:element name="tongBuManBing">
+<xsd:complexType>
+<xsd:sequence>
+<xsd:element maxOccurs="1" minOccurs="1" name="in0" nillable="true" type="xsd:string"/>
+</xsd:sequence>
+</xsd:complexType>
+</xsd:element>
+<xsd:element name="tongBuManBingResponse">
+<xsd:complexType>
+<xsd:sequence>
+<xsd:element maxOccurs="1" minOccurs="1" name="out" nillable="true" type="xsd:string"/>
+</xsd:sequence>
+</xsd:complexType>
+</xsd:element>
+<xsd:element name="saveMzzlFy">
+<xsd:complexType>
+<xsd:sequence>
+<xsd:element maxOccurs="1" minOccurs="1" name="in0" nillable="true" type="xsd:string"/>
+</xsd:sequence>
+</xsd:complexType>
+</xsd:element>
+<xsd:element name="saveMzzlFyResponse">
+<xsd:complexType>
+<xsd:sequence>
+<xsd:element maxOccurs="1" minOccurs="1" name="out" nillable="true" type="xsd:string"/>
+</xsd:sequence>
+</xsd:complexType>
+</xsd:element>
+<xsd:element name="manbingjieshou">
+<xsd:complexType>
+<xsd:sequence>
+<xsd:element maxOccurs="1" minOccurs="1" name="in0" nillable="true" type="xsd:string"/>
+</xsd:sequence>
+</xsd:complexType>
+</xsd:element>
+<xsd:element name="manbingjieshouResponse">
+<xsd:complexType>
+<xsd:sequence>
+<xsd:element maxOccurs="1" minOccurs="1" name="out" nillable="true" type="xsd:string"/>
+</xsd:sequence>
+</xsd:complexType>
+</xsd:element>
+<xsd:element name="getDict">
+<xsd:complexType>
+<xsd:sequence>
+<xsd:element maxOccurs="1" minOccurs="1" name="in0" nillable="true" type="xsd:string"/>
+</xsd:sequence>
+</xsd:complexType>
+</xsd:element>
+<xsd:element name="getDictResponse">
+<xsd:complexType>
+<xsd:sequence>
+<xsd:element maxOccurs="1" minOccurs="1" name="out" nillable="true" type="xsd:string"/>
+</xsd:sequence>
+</xsd:complexType>
+</xsd:element>
+<xsd:element name="saveZyzlSszd">
+<xsd:complexType>
+<xsd:sequence>
+<xsd:element maxOccurs="1" minOccurs="1" name="in0" nillable="true" type="xsd:string"/>
+</xsd:sequence>
+</xsd:complexType>
+</xsd:element>
+<xsd:element name="saveZyzlSszdResponse">
+<xsd:complexType>
+<xsd:sequence>
+<xsd:element maxOccurs="1" minOccurs="1" name="out" nillable="true" type="xsd:string"/>
+</xsd:sequence>
+</xsd:complexType>
+</xsd:element>
+<xsd:element name="DataCenterWebservice">
+<xsd:complexType>
+<xsd:sequence>
+<xsd:element maxOccurs="1" minOccurs="1" name="in0" nillable="true" type="xsd:string"/>
+<xsd:element maxOccurs="1" minOccurs="1" name="in1" nillable="true" type="xsd:string"/>
+<xsd:element maxOccurs="1" minOccurs="1" name="in2" nillable="true" type="xsd:string"/>
+</xsd:sequence>
+</xsd:complexType>
+</xsd:element>
+<xsd:element name="DataCenterWebserviceResponse">
+<xsd:complexType>
+<xsd:sequence>
+<xsd:element maxOccurs="1" minOccurs="1" name="out" nillable="true" type="xsd:string"/>
+</xsd:sequence>
+</xsd:complexType>
+</xsd:element>
+<xsd:element name="saveTpwUser">
+<xsd:complexType>
+<xsd:sequence>
+<xsd:element maxOccurs="1" minOccurs="1" name="in0" nillable="true" type="xsd:string"/>
+</xsd:sequence>
+</xsd:complexType>
+</xsd:element>
+<xsd:element name="saveTpwUserResponse">
+<xsd:complexType>
+<xsd:sequence>
+<xsd:element maxOccurs="1" minOccurs="1" name="out" nillable="true" type="xsd:string"/>
+</xsd:sequence>
+</xsd:complexType>
+</xsd:element>
+<xsd:element name="returnOrgList">
+<xsd:complexType/>
+</xsd:element>
+<xsd:element name="returnOrgListResponse">
+<xsd:complexType>
+<xsd:sequence>
+<xsd:element maxOccurs="1" minOccurs="1" name="out" nillable="true" type="xsd:string"/>
+</xsd:sequence>
+</xsd:complexType>
+</xsd:element>
+<xsd:element name="returnJtysYygl">
+<xsd:complexType>
+<xsd:sequence>
+<xsd:element maxOccurs="1" minOccurs="1" name="in0" nillable="true" type="xsd:string"/>
+</xsd:sequence>
+</xsd:complexType>
+</xsd:element>
+<xsd:element name="returnJtysYyglResponse">
+<xsd:complexType>
+<xsd:sequence>
+<xsd:element maxOccurs="1" minOccurs="1" name="out" nillable="true" type="xsd:string"/>
+</xsd:sequence>
+</xsd:complexType>
+</xsd:element>
+<xsd:element name="saveYszz">
+<xsd:complexType>
+<xsd:sequence>
+<xsd:element maxOccurs="1" minOccurs="1" name="in0" nillable="true" type="xsd:string"/>
+</xsd:sequence>
+</xsd:complexType>
+</xsd:element>
+<xsd:element name="saveYszzResponse">
+<xsd:complexType>
+<xsd:sequence>
+<xsd:element maxOccurs="1" minOccurs="1" name="out" nillable="true" type="xsd:string"/>
+</xsd:sequence>
+</xsd:complexType>
+</xsd:element>
+<xsd:element name="saveMzzlJyxq">
+<xsd:complexType>
+<xsd:sequence>
+<xsd:element maxOccurs="1" minOccurs="1" name="in0" nillable="true" type="xsd:string"/>
+</xsd:sequence>
+</xsd:complexType>
+</xsd:element>
+<xsd:element name="saveMzzlJyxqResponse">
+<xsd:complexType>
+<xsd:sequence>
+<xsd:element maxOccurs="1" minOccurs="1" name="out" nillable="true" type="xsd:string"/>
+</xsd:sequence>
+</xsd:complexType>
+</xsd:element>
+<xsd:element name="selectZd">
+<xsd:complexType>
+<xsd:sequence>
+<xsd:element maxOccurs="1" minOccurs="1" name="in0" nillable="true" type="xsd:string"/>
+</xsd:sequence>
+</xsd:complexType>
+</xsd:element>
+<xsd:element name="selectZdResponse">
+<xsd:complexType>
+<xsd:sequence>
+<xsd:element maxOccurs="1" minOccurs="1" name="out" nillable="true" type="xsd:string"/>
+</xsd:sequence>
+</xsd:complexType>
+</xsd:element>
+<xsd:element name="selectGztx">
+<xsd:complexType>
+<xsd:sequence>
+<xsd:element maxOccurs="1" minOccurs="1" name="in0" nillable="true" type="xsd:string"/>
+</xsd:sequence>
+</xsd:complexType>
+</xsd:element>
+<xsd:element name="selectGztxResponse">
+<xsd:complexType>
+<xsd:sequence>
+<xsd:element maxOccurs="1" minOccurs="1" name="out" nillable="true" type="xsd:string"/>
+</xsd:sequence>
+</xsd:complexType>
+</xsd:element>
+<xsd:element name="updateJtysYyglAppointStatus">
+<xsd:complexType>
+<xsd:sequence>
+<xsd:element maxOccurs="1" minOccurs="1" name="in0" nillable="true" type="xsd:string"/>
+</xsd:sequence>
+</xsd:complexType>
+</xsd:element>
+<xsd:element name="updateJtysYyglAppointStatusResponse">
+<xsd:complexType>
+<xsd:sequence>
+<xsd:element maxOccurs="1" minOccurs="1" name="out" nillable="true" type="xsd:string"/>
+</xsd:sequence>
+</xsd:complexType>
+</xsd:element>
+<xsd:element name="sendNotice">
+<xsd:complexType>
+<xsd:sequence>
+<xsd:element maxOccurs="1" minOccurs="1" name="in0" nillable="true" type="xsd:string"/>
+</xsd:sequence>
+</xsd:complexType>
+</xsd:element>
+<xsd:element name="sendNoticeResponse">
+<xsd:complexType>
+<xsd:sequence>
+<xsd:element maxOccurs="1" minOccurs="1" name="out" nillable="true" type="xsd:string"/>
+</xsd:sequence>
+</xsd:complexType>
+</xsd:element>
+<xsd:element name="saveJtysYygl">
+<xsd:complexType>
+<xsd:sequence>
+<xsd:element maxOccurs="1" minOccurs="1" name="in0" nillable="true" type="xsd:string"/>
+</xsd:sequence>
+</xsd:complexType>
+</xsd:element>
+<xsd:element name="saveJtysYyglResponse">
+<xsd:complexType>
+<xsd:sequence>
+<xsd:element maxOccurs="1" minOccurs="1" name="out" nillable="true" type="xsd:string"/>
+</xsd:sequence>
+</xsd:complexType>
+</xsd:element>
+<xsd:element name="tongBuManBingNew">
+<xsd:complexType>
+<xsd:sequence>
+<xsd:element maxOccurs="1" minOccurs="1" name="in0" nillable="true" type="xsd:string"/>
+</xsd:sequence>
+</xsd:complexType>
+</xsd:element>
+<xsd:element name="tongBuManBingNewResponse">
+<xsd:complexType>
+<xsd:sequence>
+<xsd:element maxOccurs="1" minOccurs="1" name="out" nillable="true" type="xsd:string"/>
+</xsd:sequence>
+</xsd:complexType>
+</xsd:element>
+<xsd:element name="selectGwtz">
+<xsd:complexType>
+<xsd:sequence>
+<xsd:element maxOccurs="1" minOccurs="1" name="in0" nillable="true" type="xsd:string"/>
+<xsd:element maxOccurs="1" minOccurs="1" name="in1" nillable="true" type="xsd:string"/>
+</xsd:sequence>
+</xsd:complexType>
+</xsd:element>
+<xsd:element name="selectGwtzResponse">
+<xsd:complexType>
+<xsd:sequence>
+<xsd:element maxOccurs="1" minOccurs="1" name="out" nillable="true" type="xsd:string"/>
+</xsd:sequence>
+</xsd:complexType>
+</xsd:element>
+<xsd:element name="saveTDaJkdaRkxzl">
+<xsd:complexType>
+<xsd:sequence>
+<xsd:element maxOccurs="1" minOccurs="1" name="in0" nillable="true" type="xsd:string"/>
+</xsd:sequence>
+</xsd:complexType>
+</xsd:element>
+<xsd:element name="saveTDaJkdaRkxzlResponse">
+<xsd:complexType>
+<xsd:sequence>
+<xsd:element maxOccurs="1" minOccurs="1" name="out" nillable="true" type="xsd:string"/>
+</xsd:sequence>
+</xsd:complexType>
+</xsd:element>
+</xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="saveTDaJkdaRkxzlRequest">
+    <wsdl:part name="parameters" element="tns:saveTDaJkdaRkxzl">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="saveZyzlRequest">
+    <wsdl:part name="parameters" element="tns:saveZyzl">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="saveJtysYyglRequest">
+    <wsdl:part name="parameters" element="tns:saveJtysYygl">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="sendNoticeResponse">
+    <wsdl:part name="parameters" element="tns:sendNoticeResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="sendNoticeRequest">
+    <wsdl:part name="parameters" element="tns:sendNotice">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="selecttdaJkdaRkxzlRequest">
+    <wsdl:part name="parameters" element="tns:selecttdaJkdaRkxzl">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="tongBuManBingRequest">
+    <wsdl:part name="parameters" element="tns:tongBuManBing">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="updateJtysYyglAppointStatusRequest">
+    <wsdl:part name="parameters" element="tns:updateJtysYyglAppointStatus">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="selectGztxRequest">
+    <wsdl:part name="parameters" element="tns:selectGztx">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="saveTpwRginRequest">
+    <wsdl:part name="parameters" element="tns:saveTpwRgin">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="selectGwtzResponse">
+    <wsdl:part name="parameters" element="tns:selectGwtzResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="saveMzzlHyxmResponse">
+    <wsdl:part name="parameters" element="tns:saveMzzlHyxmResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="saveZyzlHyxmResponse">
+    <wsdl:part name="parameters" element="tns:saveZyzlHyxmResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="saveMzzlJyxqRequest">
+    <wsdl:part name="parameters" element="tns:saveMzzlJyxq">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="testWebServiceResponse">
+    <wsdl:part name="parameters" element="tns:testWebServiceResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="saveZyzlCyzdResponse">
+    <wsdl:part name="parameters" element="tns:saveZyzlCyzdResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="saveZyzlResponse">
+    <wsdl:part name="parameters" element="tns:saveZyzlResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getDictResponse">
+    <wsdl:part name="parameters" element="tns:getDictResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="manbingjieshouRequest">
+    <wsdl:part name="parameters" element="tns:manbingjieshou">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="manbingjieshouResponse">
+    <wsdl:part name="parameters" element="tns:manbingjieshouResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="returnOrgListResponse">
+    <wsdl:part name="parameters" element="tns:returnOrgListResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="selectGwtzRequest">
+    <wsdl:part name="parameters" element="tns:selectGwtz">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="saveZyzlJyxqResponse">
+    <wsdl:part name="parameters" element="tns:saveZyzlJyxqResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="DataCenterWebserviceResponse">
+    <wsdl:part name="parameters" element="tns:DataCenterWebserviceResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="saveYszzResponse">
+    <wsdl:part name="parameters" element="tns:saveYszzResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="testWebServiceRequest">
+    <wsdl:part name="parameters" element="tns:testWebService">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="saveMzzlHyxmRequest">
+    <wsdl:part name="parameters" element="tns:saveMzzlHyxm">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="returnCardNumRequest">
+    <wsdl:part name="parameters" element="tns:returnCardNum">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="saveMzzlRequest">
+    <wsdl:part name="parameters" element="tns:saveMzzl">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="saveTpwRginResponse">
+    <wsdl:part name="parameters" element="tns:saveTpwRginResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="tongBuManBingResponse">
+    <wsdl:part name="parameters" element="tns:tongBuManBingResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="selectZdRequest">
+    <wsdl:part name="parameters" element="tns:selectZd">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="selectptsjRequest">
+    <wsdl:part name="parameters" element="tns:selectptsj">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="saveMzzlFyRequest">
+    <wsdl:part name="parameters" element="tns:saveMzzlFy">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="saveZyzlFyRequest">
+    <wsdl:part name="parameters" element="tns:saveZyzlFy">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="saveZyzlJyxqRequest">
+    <wsdl:part name="parameters" element="tns:saveZyzlJyxq">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="saveYszzRequest">
+    <wsdl:part name="parameters" element="tns:saveYszz">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="selectptsjResponse">
+    <wsdl:part name="parameters" element="tns:selectptsjResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="returnOrgListRequest">
+    <wsdl:part name="parameters" element="tns:returnOrgList">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="selecttdaJkdaRkxzlResponse">
+    <wsdl:part name="parameters" element="tns:selecttdaJkdaRkxzlResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="returnCardNumResponse">
+    <wsdl:part name="parameters" element="tns:returnCardNumResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="selectZdResponse">
+    <wsdl:part name="parameters" element="tns:selectZdResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="saveTpwUserResponse">
+    <wsdl:part name="parameters" element="tns:saveTpwUserResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="saveZyzlSszdResponse">
+    <wsdl:part name="parameters" element="tns:saveZyzlSszdResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="saveTDaJkdaRkxzlResponse">
+    <wsdl:part name="parameters" element="tns:saveTDaJkdaRkxzlResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="saveMzzlJyxqResponse">
+    <wsdl:part name="parameters" element="tns:saveMzzlJyxqResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="tongBuManBingNewRequest">
+    <wsdl:part name="parameters" element="tns:tongBuManBingNew">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="selectGztxResponse">
+    <wsdl:part name="parameters" element="tns:selectGztxResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="updateJtysYyglAppointStatusResponse">
+    <wsdl:part name="parameters" element="tns:updateJtysYyglAppointStatusResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getDictRequest">
+    <wsdl:part name="parameters" element="tns:getDict">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="tongBuManBingNewResponse">
+    <wsdl:part name="parameters" element="tns:tongBuManBingNewResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="saveMzzlFyResponse">
+    <wsdl:part name="parameters" element="tns:saveMzzlFyResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="saveZyzlHyxmRequest">
+    <wsdl:part name="parameters" element="tns:saveZyzlHyxm">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="saveMzzlResponse">
+    <wsdl:part name="parameters" element="tns:saveMzzlResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="saveZyzlSszdRequest">
+    <wsdl:part name="parameters" element="tns:saveZyzlSszd">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="saveJtysYyglResponse">
+    <wsdl:part name="parameters" element="tns:saveJtysYyglResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="DataCenterWebserviceRequest">
+    <wsdl:part name="parameters" element="tns:DataCenterWebservice">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="saveTpwUserRequest">
+    <wsdl:part name="parameters" element="tns:saveTpwUser">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="returnJtysYyglResponse">
+    <wsdl:part name="parameters" element="tns:returnJtysYyglResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="returnJtysYyglRequest">
+    <wsdl:part name="parameters" element="tns:returnJtysYygl">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="saveZyzlFyResponse">
+    <wsdl:part name="parameters" element="tns:saveZyzlFyResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="saveZyzlCyzdRequest">
+    <wsdl:part name="parameters" element="tns:saveZyzlCyzd">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="WebServicePortType">
+    <wsdl:operation name="testWebService">
+      <wsdl:input name="testWebServiceRequest" message="tns:testWebServiceRequest">
+    </wsdl:input>
+      <wsdl:output name="testWebServiceResponse" message="tns:testWebServiceResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="selecttdaJkdaRkxzl">
+      <wsdl:input name="selecttdaJkdaRkxzlRequest" message="tns:selecttdaJkdaRkxzlRequest">
+    </wsdl:input>
+      <wsdl:output name="selecttdaJkdaRkxzlResponse" message="tns:selecttdaJkdaRkxzlResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="saveMzzl">
+      <wsdl:input name="saveMzzlRequest" message="tns:saveMzzlRequest">
+    </wsdl:input>
+      <wsdl:output name="saveMzzlResponse" message="tns:saveMzzlResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="saveZyzlJyxq">
+      <wsdl:input name="saveZyzlJyxqRequest" message="tns:saveZyzlJyxqRequest">
+    </wsdl:input>
+      <wsdl:output name="saveZyzlJyxqResponse" message="tns:saveZyzlJyxqResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="saveMzzlHyxm">
+      <wsdl:input name="saveMzzlHyxmRequest" message="tns:saveMzzlHyxmRequest">
+    </wsdl:input>
+      <wsdl:output name="saveMzzlHyxmResponse" message="tns:saveMzzlHyxmResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="saveZyzlCyzd">
+      <wsdl:input name="saveZyzlCyzdRequest" message="tns:saveZyzlCyzdRequest">
+    </wsdl:input>
+      <wsdl:output name="saveZyzlCyzdResponse" message="tns:saveZyzlCyzdResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="selectptsj">
+      <wsdl:input name="selectptsjRequest" message="tns:selectptsjRequest">
+    </wsdl:input>
+      <wsdl:output name="selectptsjResponse" message="tns:selectptsjResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="saveTpwRgin">
+      <wsdl:input name="saveTpwRginRequest" message="tns:saveTpwRginRequest">
+    </wsdl:input>
+      <wsdl:output name="saveTpwRginResponse" message="tns:saveTpwRginResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="saveZyzl">
+      <wsdl:input name="saveZyzlRequest" message="tns:saveZyzlRequest">
+    </wsdl:input>
+      <wsdl:output name="saveZyzlResponse" message="tns:saveZyzlResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="saveZyzlHyxm">
+      <wsdl:input name="saveZyzlHyxmRequest" message="tns:saveZyzlHyxmRequest">
+    </wsdl:input>
+      <wsdl:output name="saveZyzlHyxmResponse" message="tns:saveZyzlHyxmResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="returnCardNum">
+      <wsdl:input name="returnCardNumRequest" message="tns:returnCardNumRequest">
+    </wsdl:input>
+      <wsdl:output name="returnCardNumResponse" message="tns:returnCardNumResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="saveZyzlFy">
+      <wsdl:input name="saveZyzlFyRequest" message="tns:saveZyzlFyRequest">
+    </wsdl:input>
+      <wsdl:output name="saveZyzlFyResponse" message="tns:saveZyzlFyResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="tongBuManBing">
+      <wsdl:input name="tongBuManBingRequest" message="tns:tongBuManBingRequest">
+    </wsdl:input>
+      <wsdl:output name="tongBuManBingResponse" message="tns:tongBuManBingResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="saveMzzlFy">
+      <wsdl:input name="saveMzzlFyRequest" message="tns:saveMzzlFyRequest">
+    </wsdl:input>
+      <wsdl:output name="saveMzzlFyResponse" message="tns:saveMzzlFyResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="manbingjieshou">
+      <wsdl:input name="manbingjieshouRequest" message="tns:manbingjieshouRequest">
+    </wsdl:input>
+      <wsdl:output name="manbingjieshouResponse" message="tns:manbingjieshouResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getDict">
+      <wsdl:input name="getDictRequest" message="tns:getDictRequest">
+    </wsdl:input>
+      <wsdl:output name="getDictResponse" message="tns:getDictResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="saveZyzlSszd">
+      <wsdl:input name="saveZyzlSszdRequest" message="tns:saveZyzlSszdRequest">
+    </wsdl:input>
+      <wsdl:output name="saveZyzlSszdResponse" message="tns:saveZyzlSszdResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DataCenterWebservice">
+      <wsdl:input name="DataCenterWebserviceRequest" message="tns:DataCenterWebserviceRequest">
+    </wsdl:input>
+      <wsdl:output name="DataCenterWebserviceResponse" message="tns:DataCenterWebserviceResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="saveTpwUser">
+      <wsdl:input name="saveTpwUserRequest" message="tns:saveTpwUserRequest">
+    </wsdl:input>
+      <wsdl:output name="saveTpwUserResponse" message="tns:saveTpwUserResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="returnOrgList">
+      <wsdl:input name="returnOrgListRequest" message="tns:returnOrgListRequest">
+    </wsdl:input>
+      <wsdl:output name="returnOrgListResponse" message="tns:returnOrgListResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="returnJtysYygl">
+      <wsdl:input name="returnJtysYyglRequest" message="tns:returnJtysYyglRequest">
+    </wsdl:input>
+      <wsdl:output name="returnJtysYyglResponse" message="tns:returnJtysYyglResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="saveYszz">
+      <wsdl:input name="saveYszzRequest" message="tns:saveYszzRequest">
+    </wsdl:input>
+      <wsdl:output name="saveYszzResponse" message="tns:saveYszzResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="saveMzzlJyxq">
+      <wsdl:input name="saveMzzlJyxqRequest" message="tns:saveMzzlJyxqRequest">
+    </wsdl:input>
+      <wsdl:output name="saveMzzlJyxqResponse" message="tns:saveMzzlJyxqResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="selectZd">
+      <wsdl:input name="selectZdRequest" message="tns:selectZdRequest">
+    </wsdl:input>
+      <wsdl:output name="selectZdResponse" message="tns:selectZdResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="selectGztx">
+      <wsdl:input name="selectGztxRequest" message="tns:selectGztxRequest">
+    </wsdl:input>
+      <wsdl:output name="selectGztxResponse" message="tns:selectGztxResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="updateJtysYyglAppointStatus">
+      <wsdl:input name="updateJtysYyglAppointStatusRequest" message="tns:updateJtysYyglAppointStatusRequest">
+    </wsdl:input>
+      <wsdl:output name="updateJtysYyglAppointStatusResponse" message="tns:updateJtysYyglAppointStatusResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="sendNotice">
+      <wsdl:input name="sendNoticeRequest" message="tns:sendNoticeRequest">
+    </wsdl:input>
+      <wsdl:output name="sendNoticeResponse" message="tns:sendNoticeResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="saveJtysYygl">
+      <wsdl:input name="saveJtysYyglRequest" message="tns:saveJtysYyglRequest">
+    </wsdl:input>
+      <wsdl:output name="saveJtysYyglResponse" message="tns:saveJtysYyglResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="tongBuManBingNew">
+      <wsdl:input name="tongBuManBingNewRequest" message="tns:tongBuManBingNewRequest">
+    </wsdl:input>
+      <wsdl:output name="tongBuManBingNewResponse" message="tns:tongBuManBingNewResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="selectGwtz">
+      <wsdl:input name="selectGwtzRequest" message="tns:selectGwtzRequest">
+    </wsdl:input>
+      <wsdl:output name="selectGwtzResponse" message="tns:selectGwtzResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="saveTDaJkdaRkxzl">
+      <wsdl:input name="saveTDaJkdaRkxzlRequest" message="tns:saveTDaJkdaRkxzlRequest">
+    </wsdl:input>
+      <wsdl:output name="saveTDaJkdaRkxzlResponse" message="tns:saveTDaJkdaRkxzlResponse">
+    </wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="WebServiceHttpBinding" type="tns:WebServicePortType">
+    <wsdlsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="testWebService">
+      <wsdlsoap:operation soapAction=""/>
+      <wsdl:input name="testWebServiceRequest">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="testWebServiceResponse">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="selecttdaJkdaRkxzl">
+      <wsdlsoap:operation soapAction=""/>
+      <wsdl:input name="selecttdaJkdaRkxzlRequest">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="selecttdaJkdaRkxzlResponse">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="saveMzzl">
+      <wsdlsoap:operation soapAction=""/>
+      <wsdl:input name="saveMzzlRequest">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="saveMzzlResponse">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="saveZyzlJyxq">
+      <wsdlsoap:operation soapAction=""/>
+      <wsdl:input name="saveZyzlJyxqRequest">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="saveZyzlJyxqResponse">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="saveMzzlHyxm">
+      <wsdlsoap:operation soapAction=""/>
+      <wsdl:input name="saveMzzlHyxmRequest">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="saveMzzlHyxmResponse">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="saveZyzlCyzd">
+      <wsdlsoap:operation soapAction=""/>
+      <wsdl:input name="saveZyzlCyzdRequest">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="saveZyzlCyzdResponse">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="selectptsj">
+      <wsdlsoap:operation soapAction=""/>
+      <wsdl:input name="selectptsjRequest">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="selectptsjResponse">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="saveTpwRgin">
+      <wsdlsoap:operation soapAction=""/>
+      <wsdl:input name="saveTpwRginRequest">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="saveTpwRginResponse">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="saveZyzl">
+      <wsdlsoap:operation soapAction=""/>
+      <wsdl:input name="saveZyzlRequest">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="saveZyzlResponse">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="saveZyzlHyxm">
+      <wsdlsoap:operation soapAction=""/>
+      <wsdl:input name="saveZyzlHyxmRequest">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="saveZyzlHyxmResponse">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="returnCardNum">
+      <wsdlsoap:operation soapAction=""/>
+      <wsdl:input name="returnCardNumRequest">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="returnCardNumResponse">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="saveZyzlFy">
+      <wsdlsoap:operation soapAction=""/>
+      <wsdl:input name="saveZyzlFyRequest">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="saveZyzlFyResponse">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="tongBuManBing">
+      <wsdlsoap:operation soapAction=""/>
+      <wsdl:input name="tongBuManBingRequest">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="tongBuManBingResponse">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="saveMzzlFy">
+      <wsdlsoap:operation soapAction=""/>
+      <wsdl:input name="saveMzzlFyRequest">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="saveMzzlFyResponse">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="manbingjieshou">
+      <wsdlsoap:operation soapAction=""/>
+      <wsdl:input name="manbingjieshouRequest">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="manbingjieshouResponse">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getDict">
+      <wsdlsoap:operation soapAction=""/>
+      <wsdl:input name="getDictRequest">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getDictResponse">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="saveZyzlSszd">
+      <wsdlsoap:operation soapAction=""/>
+      <wsdl:input name="saveZyzlSszdRequest">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="saveZyzlSszdResponse">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DataCenterWebservice">
+      <wsdlsoap:operation soapAction=""/>
+      <wsdl:input name="DataCenterWebserviceRequest">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="DataCenterWebserviceResponse">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="saveTpwUser">
+      <wsdlsoap:operation soapAction=""/>
+      <wsdl:input name="saveTpwUserRequest">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="saveTpwUserResponse">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="returnOrgList">
+      <wsdlsoap:operation soapAction=""/>
+      <wsdl:input name="returnOrgListRequest">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="returnOrgListResponse">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="returnJtysYygl">
+      <wsdlsoap:operation soapAction=""/>
+      <wsdl:input name="returnJtysYyglRequest">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="returnJtysYyglResponse">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="saveYszz">
+      <wsdlsoap:operation soapAction=""/>
+      <wsdl:input name="saveYszzRequest">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="saveYszzResponse">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="saveMzzlJyxq">
+      <wsdlsoap:operation soapAction=""/>
+      <wsdl:input name="saveMzzlJyxqRequest">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="saveMzzlJyxqResponse">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="selectZd">
+      <wsdlsoap:operation soapAction=""/>
+      <wsdl:input name="selectZdRequest">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="selectZdResponse">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="selectGztx">
+      <wsdlsoap:operation soapAction=""/>
+      <wsdl:input name="selectGztxRequest">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="selectGztxResponse">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="updateJtysYyglAppointStatus">
+      <wsdlsoap:operation soapAction=""/>
+      <wsdl:input name="updateJtysYyglAppointStatusRequest">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="updateJtysYyglAppointStatusResponse">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="sendNotice">
+      <wsdlsoap:operation soapAction=""/>
+      <wsdl:input name="sendNoticeRequest">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="sendNoticeResponse">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="saveJtysYygl">
+      <wsdlsoap:operation soapAction=""/>
+      <wsdl:input name="saveJtysYyglRequest">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="saveJtysYyglResponse">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="tongBuManBingNew">
+      <wsdlsoap:operation soapAction=""/>
+      <wsdl:input name="tongBuManBingNewRequest">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="tongBuManBingNewResponse">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="selectGwtz">
+      <wsdlsoap:operation soapAction=""/>
+      <wsdl:input name="selectGwtzRequest">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="selectGwtzResponse">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="saveTDaJkdaRkxzl">
+      <wsdlsoap:operation soapAction=""/>
+      <wsdl:input name="saveTDaJkdaRkxzlRequest">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="saveTDaJkdaRkxzlResponse">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="WebService">
+    <wsdl:port name="WebServiceHttpPort" binding="tns:WebServiceHttpBinding">
+      <wsdlsoap:address location="http://11.49.253.47:8887/XfireWebService_Oracle/services/Login"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

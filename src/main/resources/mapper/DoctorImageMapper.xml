@@ -1,0 +1,468 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dateupdate.com.springmvc.mapper.DoctorImageMapper">
+  <resultMap id="BaseResultMap" type="com.dateupdate.com.springmvc.model.DoctorImage">
+    <id column="person_id" jdbcType="INTEGER" property="personId" />
+    <result column="work_no" jdbcType="VARCHAR" property="workNo" />
+    <result column="person_name" jdbcType="VARCHAR" property="personName" />
+    <result column="person_sort_id" jdbcType="INTEGER" property="personSortId" />
+    <result column="sex" jdbcType="VARCHAR" property="sex" />
+    <result column="birthday" jdbcType="TIMESTAMP" property="birthday" />
+    <result column="native_place" jdbcType="VARCHAR" property="nativePlace" />
+    <result column="id_card_no" jdbcType="VARCHAR" property="idCardNo" />
+    <result column="education_id" jdbcType="INTEGER" property="educationId" />
+    <result column="graduate_school" jdbcType="VARCHAR" property="graduateSchool" />
+    <result column="marriage_status_id" jdbcType="INTEGER" property="marriageStatusId" />
+    <result column="address" jdbcType="VARCHAR" property="address" />
+    <result column="constract" jdbcType="VARCHAR" property="constract" />
+    <result column="telphone" jdbcType="VARCHAR" property="telphone" />
+    <result column="mobile" jdbcType="VARCHAR" property="mobile" />
+    <result column="email" jdbcType="VARCHAR" property="email" />
+    <result column="title_id" jdbcType="INTEGER" property="titleId" />
+    <result column="occupation_sort_id" jdbcType="INTEGER" property="occupationSortId" />
+    <result column="join_date" jdbcType="TIMESTAMP" property="joinDate" />
+    <result column="serivice" jdbcType="BIT" property="serivice" />
+    <result column="level_date" jdbcType="TIMESTAMP" property="levelDate" />
+    <result column="input_code" jdbcType="VARCHAR" property="inputCode" />
+    <result column="input_code2" jdbcType="VARCHAR" property="inputCode2" />
+    <result column="recipe_rights" jdbcType="INTEGER" property="recipeRights" />
+    <result column="last_update_operator" jdbcType="INTEGER" property="lastUpdateOperator" />
+    <result column="last_update_station" jdbcType="INTEGER" property="lastUpdateStation" />
+    <result column="last_update_version" jdbcType="INTEGER" property="lastUpdateVersion" />
+    <result column="last_update_time" jdbcType="TIMESTAMP" property="lastUpdateTime" />
+    <result column="department_id" jdbcType="INTEGER" property="departmentId" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.dateupdate.com.springmvc.model.DoctorImageWithBLOBs">
+    <result column="sign_image" jdbcType="LONGVARBINARY" property="signImage" />
+    <result column="photo_image" jdbcType="LONGVARBINARY" property="photoImage" />
+  </resultMap>
+
+    <resultMap id="getQzPhoto" type="com.dateupdate.com.springmvc.model.DQzPhoto">
+        <id column="compose_item_no" jdbcType="VARCHAR" property="XMName"/>
+        <result column="user_name" jdbcType="VARCHAR" property="UserName"/>
+        <result column="sign_image" jdbcType="LONGVARBINARY" property="SignImage"/>
+    </resultMap>
+    <resultMap id="Qzbr" type="com.dateupdate.com.springmvc.model.Qzbr">
+        <id column="operation_sort" jdbcType="INTEGER" property="operationSort" />
+        <id column="sign_name" jdbcType="VARCHAR" property="signName" />
+        <result column="sign_data" jdbcType="VARCHAR" property="signData" />
+    </resultMap>
+  <sql id="Base_Column_List">
+    person_id, work_no, person_name, person_sort_id, sex, birthday, native_place, id_card_no, 
+    education_id, graduate_school, marriage_status_id, address, constract, telphone, 
+    mobile, email, title_id, occupation_sort_id, join_date, serivice, level_date, input_code, 
+    input_code2, recipe_rights, last_update_operator, last_update_station, last_update_version, 
+    last_update_time, department_id
+  </sql>
+  <sql id="Blob_Column_List">
+    sign_image, photo_image
+  </sql>
+    <select id="Qzbr" parameterType="java.lang.String" resultMap="Qzbr">
+        select operation_sort,sign_name,sign_data from emr_sign_list where  operation_no = #{id}
+    </select>
+    <select id="getQzPhoto" parameterType="java.lang.String" resultMap="getQzPhoto">
+        SELECT
+	ps_persons.sign_image,
+	pe_register_items.compose_item_no,
+	acc_users.user_name
+FROM
+	pe_register_items,
+	ps_persons,
+	acc_users
+WHERE
+	patient_no = #{id}
+AND pe_register_items.operator_id = acc_users.serial_no
+AND acc_users.login_name = ps_persons.work_no;
+    </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="ResultMapWithBLOBs">
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from ps_persons
+    where person_id = #{personId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from ps_persons
+    where person_id = #{personId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.dateupdate.com.springmvc.model.DoctorImageWithBLOBs">
+    insert into ps_persons (person_id, work_no, person_name, 
+      person_sort_id, sex, birthday, 
+      native_place, id_card_no, education_id, 
+      graduate_school, marriage_status_id, address, 
+      constract, telphone, mobile, 
+      email, title_id, occupation_sort_id, 
+      join_date, serivice, level_date, 
+      input_code, input_code2, recipe_rights, 
+      last_update_operator, last_update_station, 
+      last_update_version, last_update_time, department_id, 
+      sign_image, photo_image)
+    values (#{personId,jdbcType=INTEGER}, #{workNo,jdbcType=VARCHAR}, #{personName,jdbcType=VARCHAR}, 
+      #{personSortId,jdbcType=INTEGER}, #{sex,jdbcType=VARCHAR}, #{birthday,jdbcType=TIMESTAMP}, 
+      #{nativePlace,jdbcType=VARCHAR}, #{idCardNo,jdbcType=VARCHAR}, #{educationId,jdbcType=INTEGER}, 
+      #{graduateSchool,jdbcType=VARCHAR}, #{marriageStatusId,jdbcType=INTEGER}, #{address,jdbcType=VARCHAR}, 
+      #{constract,jdbcType=VARCHAR}, #{telphone,jdbcType=VARCHAR}, #{mobile,jdbcType=VARCHAR}, 
+      #{email,jdbcType=VARCHAR}, #{titleId,jdbcType=INTEGER}, #{occupationSortId,jdbcType=INTEGER}, 
+      #{joinDate,jdbcType=TIMESTAMP}, #{serivice,jdbcType=BIT}, #{levelDate,jdbcType=TIMESTAMP}, 
+      #{inputCode,jdbcType=VARCHAR}, #{inputCode2,jdbcType=VARCHAR}, #{recipeRights,jdbcType=INTEGER}, 
+      #{lastUpdateOperator,jdbcType=INTEGER}, #{lastUpdateStation,jdbcType=INTEGER}, 
+      #{lastUpdateVersion,jdbcType=INTEGER}, #{lastUpdateTime,jdbcType=TIMESTAMP}, #{departmentId,jdbcType=INTEGER}, 
+      #{signImage,jdbcType=LONGVARBINARY}, #{photoImage,jdbcType=LONGVARBINARY})
+  </insert>
+  <insert id="insertSelective" parameterType="com.dateupdate.com.springmvc.model.DoctorImageWithBLOBs">
+    insert into ps_persons
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="personId != null">
+        person_id,
+      </if>
+      <if test="workNo != null">
+        work_no,
+      </if>
+      <if test="personName != null">
+        person_name,
+      </if>
+      <if test="personSortId != null">
+        person_sort_id,
+      </if>
+      <if test="sex != null">
+        sex,
+      </if>
+      <if test="birthday != null">
+        birthday,
+      </if>
+      <if test="nativePlace != null">
+        native_place,
+      </if>
+      <if test="idCardNo != null">
+        id_card_no,
+      </if>
+      <if test="educationId != null">
+        education_id,
+      </if>
+      <if test="graduateSchool != null">
+        graduate_school,
+      </if>
+      <if test="marriageStatusId != null">
+        marriage_status_id,
+      </if>
+      <if test="address != null">
+        address,
+      </if>
+      <if test="constract != null">
+        constract,
+      </if>
+      <if test="telphone != null">
+        telphone,
+      </if>
+      <if test="mobile != null">
+        mobile,
+      </if>
+      <if test="email != null">
+        email,
+      </if>
+      <if test="titleId != null">
+        title_id,
+      </if>
+      <if test="occupationSortId != null">
+        occupation_sort_id,
+      </if>
+      <if test="joinDate != null">
+        join_date,
+      </if>
+      <if test="serivice != null">
+        serivice,
+      </if>
+      <if test="levelDate != null">
+        level_date,
+      </if>
+      <if test="inputCode != null">
+        input_code,
+      </if>
+      <if test="inputCode2 != null">
+        input_code2,
+      </if>
+      <if test="recipeRights != null">
+        recipe_rights,
+      </if>
+      <if test="lastUpdateOperator != null">
+        last_update_operator,
+      </if>
+      <if test="lastUpdateStation != null">
+        last_update_station,
+      </if>
+      <if test="lastUpdateVersion != null">
+        last_update_version,
+      </if>
+      <if test="lastUpdateTime != null">
+        last_update_time,
+      </if>
+      <if test="departmentId != null">
+        department_id,
+      </if>
+      <if test="signImage != null">
+        sign_image,
+      </if>
+      <if test="photoImage != null">
+        photo_image,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="personId != null">
+        #{personId,jdbcType=INTEGER},
+      </if>
+      <if test="workNo != null">
+        #{workNo,jdbcType=VARCHAR},
+      </if>
+      <if test="personName != null">
+        #{personName,jdbcType=VARCHAR},
+      </if>
+      <if test="personSortId != null">
+        #{personSortId,jdbcType=INTEGER},
+      </if>
+      <if test="sex != null">
+        #{sex,jdbcType=VARCHAR},
+      </if>
+      <if test="birthday != null">
+        #{birthday,jdbcType=TIMESTAMP},
+      </if>
+      <if test="nativePlace != null">
+        #{nativePlace,jdbcType=VARCHAR},
+      </if>
+      <if test="idCardNo != null">
+        #{idCardNo,jdbcType=VARCHAR},
+      </if>
+      <if test="educationId != null">
+        #{educationId,jdbcType=INTEGER},
+      </if>
+      <if test="graduateSchool != null">
+        #{graduateSchool,jdbcType=VARCHAR},
+      </if>
+      <if test="marriageStatusId != null">
+        #{marriageStatusId,jdbcType=INTEGER},
+      </if>
+      <if test="address != null">
+        #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="constract != null">
+        #{constract,jdbcType=VARCHAR},
+      </if>
+      <if test="telphone != null">
+        #{telphone,jdbcType=VARCHAR},
+      </if>
+      <if test="mobile != null">
+        #{mobile,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null">
+        #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="titleId != null">
+        #{titleId,jdbcType=INTEGER},
+      </if>
+      <if test="occupationSortId != null">
+        #{occupationSortId,jdbcType=INTEGER},
+      </if>
+      <if test="joinDate != null">
+        #{joinDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="serivice != null">
+        #{serivice,jdbcType=BIT},
+      </if>
+      <if test="levelDate != null">
+        #{levelDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="inputCode != null">
+        #{inputCode,jdbcType=VARCHAR},
+      </if>
+      <if test="inputCode2 != null">
+        #{inputCode2,jdbcType=VARCHAR},
+      </if>
+      <if test="recipeRights != null">
+        #{recipeRights,jdbcType=INTEGER},
+      </if>
+      <if test="lastUpdateOperator != null">
+        #{lastUpdateOperator,jdbcType=INTEGER},
+      </if>
+      <if test="lastUpdateStation != null">
+        #{lastUpdateStation,jdbcType=INTEGER},
+      </if>
+      <if test="lastUpdateVersion != null">
+        #{lastUpdateVersion,jdbcType=INTEGER},
+      </if>
+      <if test="lastUpdateTime != null">
+        #{lastUpdateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="departmentId != null">
+        #{departmentId,jdbcType=INTEGER},
+      </if>
+      <if test="signImage != null">
+        #{signImage,jdbcType=LONGVARBINARY},
+      </if>
+      <if test="photoImage != null">
+        #{photoImage,jdbcType=LONGVARBINARY},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.dateupdate.com.springmvc.model.DoctorImageWithBLOBs">
+    update ps_persons
+    <set>
+      <if test="workNo != null">
+        work_no = #{workNo,jdbcType=VARCHAR},
+      </if>
+      <if test="personName != null">
+        person_name = #{personName,jdbcType=VARCHAR},
+      </if>
+      <if test="personSortId != null">
+        person_sort_id = #{personSortId,jdbcType=INTEGER},
+      </if>
+      <if test="sex != null">
+        sex = #{sex,jdbcType=VARCHAR},
+      </if>
+      <if test="birthday != null">
+        birthday = #{birthday,jdbcType=TIMESTAMP},
+      </if>
+      <if test="nativePlace != null">
+        native_place = #{nativePlace,jdbcType=VARCHAR},
+      </if>
+      <if test="idCardNo != null">
+        id_card_no = #{idCardNo,jdbcType=VARCHAR},
+      </if>
+      <if test="educationId != null">
+        education_id = #{educationId,jdbcType=INTEGER},
+      </if>
+      <if test="graduateSchool != null">
+        graduate_school = #{graduateSchool,jdbcType=VARCHAR},
+      </if>
+      <if test="marriageStatusId != null">
+        marriage_status_id = #{marriageStatusId,jdbcType=INTEGER},
+      </if>
+      <if test="address != null">
+        address = #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="constract != null">
+        constract = #{constract,jdbcType=VARCHAR},
+      </if>
+      <if test="telphone != null">
+        telphone = #{telphone,jdbcType=VARCHAR},
+      </if>
+      <if test="mobile != null">
+        mobile = #{mobile,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null">
+        email = #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="titleId != null">
+        title_id = #{titleId,jdbcType=INTEGER},
+      </if>
+      <if test="occupationSortId != null">
+        occupation_sort_id = #{occupationSortId,jdbcType=INTEGER},
+      </if>
+      <if test="joinDate != null">
+        join_date = #{joinDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="serivice != null">
+        serivice = #{serivice,jdbcType=BIT},
+      </if>
+      <if test="levelDate != null">
+        level_date = #{levelDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="inputCode != null">
+        input_code = #{inputCode,jdbcType=VARCHAR},
+      </if>
+      <if test="inputCode2 != null">
+        input_code2 = #{inputCode2,jdbcType=VARCHAR},
+      </if>
+      <if test="recipeRights != null">
+        recipe_rights = #{recipeRights,jdbcType=INTEGER},
+      </if>
+      <if test="lastUpdateOperator != null">
+        last_update_operator = #{lastUpdateOperator,jdbcType=INTEGER},
+      </if>
+      <if test="lastUpdateStation != null">
+        last_update_station = #{lastUpdateStation,jdbcType=INTEGER},
+      </if>
+      <if test="lastUpdateVersion != null">
+        last_update_version = #{lastUpdateVersion,jdbcType=INTEGER},
+      </if>
+      <if test="lastUpdateTime != null">
+        last_update_time = #{lastUpdateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="departmentId != null">
+        department_id = #{departmentId,jdbcType=INTEGER},
+      </if>
+      <if test="signImage != null">
+        sign_image = #{signImage,jdbcType=LONGVARBINARY},
+      </if>
+      <if test="photoImage != null">
+        photo_image = #{photoImage,jdbcType=LONGVARBINARY},
+      </if>
+    </set>
+    where person_id = #{personId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.dateupdate.com.springmvc.model.DoctorImageWithBLOBs">
+    update ps_persons
+    set work_no = #{workNo,jdbcType=VARCHAR},
+      person_name = #{personName,jdbcType=VARCHAR},
+      person_sort_id = #{personSortId,jdbcType=INTEGER},
+      sex = #{sex,jdbcType=VARCHAR},
+      birthday = #{birthday,jdbcType=TIMESTAMP},
+      native_place = #{nativePlace,jdbcType=VARCHAR},
+      id_card_no = #{idCardNo,jdbcType=VARCHAR},
+      education_id = #{educationId,jdbcType=INTEGER},
+      graduate_school = #{graduateSchool,jdbcType=VARCHAR},
+      marriage_status_id = #{marriageStatusId,jdbcType=INTEGER},
+      address = #{address,jdbcType=VARCHAR},
+      constract = #{constract,jdbcType=VARCHAR},
+      telphone = #{telphone,jdbcType=VARCHAR},
+      mobile = #{mobile,jdbcType=VARCHAR},
+      email = #{email,jdbcType=VARCHAR},
+      title_id = #{titleId,jdbcType=INTEGER},
+      occupation_sort_id = #{occupationSortId,jdbcType=INTEGER},
+      join_date = #{joinDate,jdbcType=TIMESTAMP},
+      serivice = #{serivice,jdbcType=BIT},
+      level_date = #{levelDate,jdbcType=TIMESTAMP},
+      input_code = #{inputCode,jdbcType=VARCHAR},
+      input_code2 = #{inputCode2,jdbcType=VARCHAR},
+      recipe_rights = #{recipeRights,jdbcType=INTEGER},
+      last_update_operator = #{lastUpdateOperator,jdbcType=INTEGER},
+      last_update_station = #{lastUpdateStation,jdbcType=INTEGER},
+      last_update_version = #{lastUpdateVersion,jdbcType=INTEGER},
+      last_update_time = #{lastUpdateTime,jdbcType=TIMESTAMP},
+      department_id = #{departmentId,jdbcType=INTEGER},
+      sign_image = #{signImage,jdbcType=LONGVARBINARY},
+      photo_image = #{photoImage,jdbcType=LONGVARBINARY}
+    where person_id = #{personId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.dateupdate.com.springmvc.model.DoctorImage">
+    update ps_persons
+    set work_no = #{workNo,jdbcType=VARCHAR},
+      person_name = #{personName,jdbcType=VARCHAR},
+      person_sort_id = #{personSortId,jdbcType=INTEGER},
+      sex = #{sex,jdbcType=VARCHAR},
+      birthday = #{birthday,jdbcType=TIMESTAMP},
+      native_place = #{nativePlace,jdbcType=VARCHAR},
+      id_card_no = #{idCardNo,jdbcType=VARCHAR},
+      education_id = #{educationId,jdbcType=INTEGER},
+      graduate_school = #{graduateSchool,jdbcType=VARCHAR},
+      marriage_status_id = #{marriageStatusId,jdbcType=INTEGER},
+      address = #{address,jdbcType=VARCHAR},
+      constract = #{constract,jdbcType=VARCHAR},
+      telphone = #{telphone,jdbcType=VARCHAR},
+      mobile = #{mobile,jdbcType=VARCHAR},
+      email = #{email,jdbcType=VARCHAR},
+      title_id = #{titleId,jdbcType=INTEGER},
+      occupation_sort_id = #{occupationSortId,jdbcType=INTEGER},
+      join_date = #{joinDate,jdbcType=TIMESTAMP},
+      serivice = #{serivice,jdbcType=BIT},
+      level_date = #{levelDate,jdbcType=TIMESTAMP},
+      input_code = #{inputCode,jdbcType=VARCHAR},
+      input_code2 = #{inputCode2,jdbcType=VARCHAR},
+      recipe_rights = #{recipeRights,jdbcType=INTEGER},
+      last_update_operator = #{lastUpdateOperator,jdbcType=INTEGER},
+      last_update_station = #{lastUpdateStation,jdbcType=INTEGER},
+      last_update_version = #{lastUpdateVersion,jdbcType=INTEGER},
+      last_update_time = #{lastUpdateTime,jdbcType=TIMESTAMP},
+      department_id = #{departmentId,jdbcType=INTEGER}
+    where person_id = #{personId,jdbcType=INTEGER}
+  </update>
+</mapper>

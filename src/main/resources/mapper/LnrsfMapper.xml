@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dateupdate.com.springmvc.mapper.LnrsfMapper">
+    <resultMap id="BaseResultMap" type="com.dateupdate.com.springmvc.model.Lnrsf">
+        <id column="patient_no" jdbcType="VARCHAR" property="patientNo"/>
+        <result column="item_value_1" jdbcType="INTEGER" property="itemValue1"/>
+        <result column="item_value_2" jdbcType="INTEGER" property="itemValue2"/>
+        <result column="item_value_3" jdbcType="INTEGER" property="itemValue3"/>
+        <result column="item_value_4" jdbcType="INTEGER" property="itemValue4"/>
+        <result column="item_value_5" jdbcType="INTEGER" property="itemValue5"/>
+        <result column="status" jdbcType="INTEGER" property="status"/>
+        <result column="operator_id" jdbcType="INTEGER" property="operatorId"/>
+        <result column="operate_date" jdbcType="TIMESTAMP" property="operateDate"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+    patient_no, item_value_1, item_value_2, item_value_3, item_value_4, item_value_5, 
+    status, operator_id, operate_date
+  </sql>
+    <select id="getDocutorName" parameterType="java.lang.Integer" resultType="java.lang.String">
+        SELECT user_name from acc_users WHERE serial_no = #{id}
+    </select>
+    <select id="getCard" parameterType="java.lang.String" resultType="java.lang.String">
+            SELECT [person_no] FROM [HospDataV9].[dbo].[pe_register_list] WHERE patient_no=#{id}
+    </select>
+    <select id="getLnrsfInfo" parameterType="java.lang.String" resultMap="BaseResultMap">
+        select * from pe_care_ablity_list WHERE patient_no = #{id}
+    </select>
+    <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from pe_care_ablity_list
+        where patient_no = #{patientNo,jdbcType=VARCHAR}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from pe_care_ablity_list
+    where patient_no = #{patientNo,jdbcType=VARCHAR}
+  </delete>
+    <insert id="insert" parameterType="com.dateupdate.com.springmvc.model.Lnrsf">
+    insert into pe_care_ablity_list (patient_no, item_value_1, item_value_2, 
+      item_value_3, item_value_4, item_value_5, 
+      status, operator_id, operate_date
+      )
+    values (#{patientNo,jdbcType=VARCHAR}, #{itemValue1,jdbcType=INTEGER}, #{itemValue2,jdbcType=INTEGER}, 
+      #{itemValue3,jdbcType=INTEGER}, #{itemValue4,jdbcType=INTEGER}, #{itemValue5,jdbcType=INTEGER}, 
+      #{status,jdbcType=INTEGER}, #{operatorId,jdbcType=INTEGER}, #{operateDate,jdbcType=TIMESTAMP}
+      )
+  </insert>
+    <insert id="insertSelective" parameterType="com.dateupdate.com.springmvc.model.Lnrsf">
+        insert into pe_care_ablity_list
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="patientNo != null">
+                patient_no,
+            </if>
+            <if test="itemValue1 != null">
+                item_value_1,
+            </if>
+            <if test="itemValue2 != null">
+                item_value_2,
+            </if>
+            <if test="itemValue3 != null">
+                item_value_3,
+            </if>
+            <if test="itemValue4 != null">
+                item_value_4,
+            </if>
+            <if test="itemValue5 != null">
+                item_value_5,
+            </if>
+            <if test="status != null">
+                status,
+            </if>
+            <if test="operatorId != null">
+                operator_id,
+            </if>
+            <if test="operateDate != null">
+                operate_date,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="patientNo != null">
+                #{patientNo,jdbcType=VARCHAR},
+            </if>
+            <if test="itemValue1 != null">
+                #{itemValue1,jdbcType=INTEGER},
+            </if>
+            <if test="itemValue2 != null">
+                #{itemValue2,jdbcType=INTEGER},
+            </if>
+            <if test="itemValue3 != null">
+                #{itemValue3,jdbcType=INTEGER},
+            </if>
+            <if test="itemValue4 != null">
+                #{itemValue4,jdbcType=INTEGER},
+            </if>
+            <if test="itemValue5 != null">
+                #{itemValue5,jdbcType=INTEGER},
+            </if>
+            <if test="status != null">
+                #{status,jdbcType=INTEGER},
+            </if>
+            <if test="operatorId != null">
+                #{operatorId,jdbcType=INTEGER},
+            </if>
+            <if test="operateDate != null">
+                #{operateDate,jdbcType=TIMESTAMP},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.dateupdate.com.springmvc.model.Lnrsf">
+        update pe_care_ablity_list
+        <set>
+            <if test="itemValue1 != null">
+                item_value_1 = #{itemValue1,jdbcType=INTEGER},
+            </if>
+            <if test="itemValue2 != null">
+                item_value_2 = #{itemValue2,jdbcType=INTEGER},
+            </if>
+            <if test="itemValue3 != null">
+                item_value_3 = #{itemValue3,jdbcType=INTEGER},
+            </if>
+            <if test="itemValue4 != null">
+                item_value_4 = #{itemValue4,jdbcType=INTEGER},
+            </if>
+            <if test="itemValue5 != null">
+                item_value_5 = #{itemValue5,jdbcType=INTEGER},
+            </if>
+            <if test="status != null">
+                status = #{status,jdbcType=INTEGER},
+            </if>
+            <if test="operatorId != null">
+                operator_id = #{operatorId,jdbcType=INTEGER},
+            </if>
+            <if test="operateDate != null">
+                operate_date = #{operateDate,jdbcType=TIMESTAMP},
+            </if>
+        </set>
+        where patient_no = #{patientNo,jdbcType=VARCHAR}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.dateupdate.com.springmvc.model.Lnrsf">
+    update pe_care_ablity_list
+    set item_value_1 = #{itemValue1,jdbcType=INTEGER},
+      item_value_2 = #{itemValue2,jdbcType=INTEGER},
+      item_value_3 = #{itemValue3,jdbcType=INTEGER},
+      item_value_4 = #{itemValue4,jdbcType=INTEGER},
+      item_value_5 = #{itemValue5,jdbcType=INTEGER},
+      status = #{status,jdbcType=INTEGER},
+      operator_id = #{operatorId,jdbcType=INTEGER},
+      operate_date = #{operateDate,jdbcType=TIMESTAMP}
+    where patient_no = #{patientNo,jdbcType=VARCHAR}
+  </update>
+</mapper>

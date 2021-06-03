@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dateupdate.com.springmvc.mapper.LnrzytzMapper">
+  <resultMap id="BaseResultMap" type="com.dateupdate.com.springmvc.model.LnrzytzKey">
+    <id column="patient_no" jdbcType="VARCHAR" property="patientNo" />
+    <id column="question_id" jdbcType="INTEGER" property="questionId" />
+    <result column="answer" jdbcType="INTEGER" property="answer" />
+  </resultMap>
+    <resultMap id="BaseResultMap1" type="com.dateupdate.com.springmvc.model.Lnrzytz1">
+        <id column="patient_no" jdbcType="VARCHAR" property="patientNo" />
+        <result column="abnormity_id1" jdbcType="INTEGER" property="abnormityId1" />
+        <result column="abnormity_id2" jdbcType="INTEGER" property="abnormityId2" />
+        <result column="abnormity_id3" jdbcType="INTEGER" property="abnormityId3" />
+        <result column="abnormity_id4" jdbcType="INTEGER" property="abnormityId4" />
+        <result column="abnormity_id5" jdbcType="INTEGER" property="abnormityId5" />
+        <result column="abnormity_id6" jdbcType="INTEGER" property="abnormityId6" />
+        <result column="abnormity_id7" jdbcType="INTEGER" property="abnormityId7" />
+        <result column="abnormity_id8" jdbcType="INTEGER" property="abnormityId8" />
+        <result column="abnormity_id9" jdbcType="INTEGER" property="abnormityId9" />
+        <result column="advice" jdbcType="VARCHAR" property="advice" />
+        <result column="status" jdbcType="INTEGER" property="status" />
+    </resultMap>
+  <sql id="Base_Column_List">
+    patient_no, question_id, answer
+  </sql>
+    <select id="getInfo2" parameterType="java.lang.String" resultMap = "BaseResultMap1">
+        select * from pe_chinese_medicine_list WHERE patient_no = #{id}
+    </select>
+    <select id="getInfo1" parameterType="java.lang.String" resultMap="BaseResultMap">
+        SELECT *from pe_chinese_medicine_questions where patient_no = #{id}
+    </select>
+  <select id="selectByPrimaryKey" parameterType="com.dateupdate.com.springmvc.model.LnrzytzKey" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from pe_chinese_medicine_questions
+    where patient_no = #{patientNo,jdbcType=VARCHAR}
+      and question_id = #{questionId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="com.dateupdate.com.springmvc.model.LnrzytzKey">
+    delete from pe_chinese_medicine_questions
+    where patient_no = #{patientNo,jdbcType=VARCHAR}
+      and question_id = #{questionId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.dateupdate.com.springmvc.model.Lnrzytz">
+    insert into pe_chinese_medicine_questions (patient_no, question_id, answer
+      )
+    values (#{patientNo,jdbcType=VARCHAR}, #{questionId,jdbcType=INTEGER}, #{answer,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.dateupdate.com.springmvc.model.Lnrzytz">
+    insert into pe_chinese_medicine_questions
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="patientNo != null">
+        patient_no,
+      </if>
+      <if test="questionId != null">
+        question_id,
+      </if>
+      <if test="answer != null">
+        answer,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="patientNo != null">
+        #{patientNo,jdbcType=VARCHAR},
+      </if>
+      <if test="questionId != null">
+        #{questionId,jdbcType=INTEGER},
+      </if>
+      <if test="answer != null">
+        #{answer,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.dateupdate.com.springmvc.model.Lnrzytz">
+    update pe_chinese_medicine_questions
+    <set>
+      <if test="answer != null">
+        answer = #{answer,jdbcType=INTEGER},
+      </if>
+    </set>
+    where patient_no = #{patientNo,jdbcType=VARCHAR}
+      and question_id = #{questionId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.dateupdate.com.springmvc.model.Lnrzytz">
+    update pe_chinese_medicine_questions
+    set answer = #{answer,jdbcType=INTEGER}
+    where patient_no = #{patientNo,jdbcType=VARCHAR}
+      and question_id = #{questionId,jdbcType=INTEGER}
+  </update>
+</mapper>

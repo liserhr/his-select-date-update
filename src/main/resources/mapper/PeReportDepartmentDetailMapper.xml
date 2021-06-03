@@ -1,0 +1,306 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dateupdate.com.springmvc.mapper.PeReportDepartmentDetailMapper">
+  <resultMap id="BaseResultMap" type="com.dateupdate.com.springmvc.model.PeReportDepartmentDetail">
+    <id column="patient_no" jdbcType="VARCHAR" property="patientNo" />
+    <id column="department_id" jdbcType="INTEGER" property="departmentId" />
+    <id column="compose_item_no" jdbcType="VARCHAR" property="composeItemNo" />
+    <id column="item_no" jdbcType="VARCHAR" property="itemNo" />
+    <result column="result_class_id" jdbcType="INTEGER" property="resultClassId" />
+    <result column="pe_result" jdbcType="VARCHAR" property="peResult" />
+    <result column="is_abnormity" jdbcType="BIT" property="isAbnormity" />
+    <result column="abort_reason_id" jdbcType="INTEGER" property="abortReasonId" />
+    <result column="operator_id" jdbcType="INTEGER" property="operatorId" />
+    <result column="operate_date" jdbcType="TIMESTAMP" property="operateDate" />
+    <result column="result_flag" jdbcType="INTEGER" property="resultFlag" />
+    <result column="normal_up" jdbcType="DOUBLE" property="normalUp" />
+    <result column="normal_down" jdbcType="DOUBLE" property="normalDown" />
+    <result column="normal_print" jdbcType="VARCHAR" property="normalPrint" />
+    <result column="report_operator_id" jdbcType="INTEGER" property="reportOperatorId" />
+    <result column="report_check_operator_id" jdbcType="INTEGER" property="reportCheckOperatorId" />
+    <result column="report_date" jdbcType="TIMESTAMP" property="reportDate" />
+  </resultMap>
+    <resultMap id="BaseResultMapListOne" type="com.dateupdate.com.springmvc.model.ListOne">
+        <id column="patient_no" jdbcType="VARCHAR" property="patientNo" />
+        <id column="department_id" jdbcType="INTEGER" property="departmentId" />
+        <id column="compose_item_no" jdbcType="VARCHAR" property="composeItemNo" />
+        <id column="item_no" jdbcType="VARCHAR" property="itemNo" />
+        <result column="item_name" jdbcType="VARCHAR" property="itemName"/>
+        <result column="result_class_id" jdbcType="INTEGER" property="resultClassId" />
+        <result column="pe_result" jdbcType="VARCHAR" property="peResult" />
+        <result column="is_abnormity" jdbcType="BIT" property="isAbnormity" />
+        <result column="abort_reason_id" jdbcType="INTEGER" property="abortReasonId" />
+        <result column="operator_id" jdbcType="INTEGER" property="operatorId" />
+        <result column="operate_date" jdbcType="TIMESTAMP" property="operateDate" />
+        <result column="result_flag" jdbcType="INTEGER" property="resultFlag" />
+        <result column="normal_up" jdbcType="DOUBLE" property="normalUp" />
+        <result column="normal_down" jdbcType="DOUBLE" property="normalDown" />
+        <result column="normal_print" jdbcType="VARCHAR" property="normalPrint" />
+        <result column="report_operator_id" jdbcType="INTEGER" property="reportOperatorId" />
+        <result column="report_check_operator_id" jdbcType="INTEGER" property="reportCheckOperatorId" />
+        <result column="report_date" jdbcType="TIMESTAMP" property="reportDate" />
+    </resultMap>
+
+
+    <resultMap id="getPersionCardTime" type="com.dateupdate.com.springmvc.model.CardTimeDocutor">
+        <result column="operator_id" jdbcType="INTEGER"  property="operator_id"/>
+        <result column="person_no" jdbcType="VARCHAR"  property="person_no"/>
+        <result column="pe_date" jdbcType="TIMESTAMP"  property="pe_date"/>
+    </resultMap>
+
+
+    <select id="getDoctorName" parameterType="java.lang.String" resultType="java.lang.String">
+        SELECT
+	user_name
+    FROM
+	acc_users,
+	pe_register_list
+WHERE
+	patient_no = #{id}
+AND pe_register_list.operator_id = acc_users.serial_no;
+    </select>
+
+
+<select id="getPersionCardTime" parameterType="java.lang.String" resultMap="getPersionCardTime">
+    SELECT [person_no],[pe_date],[operator_id] FROM [HospDataV9].[dbo].[pe_register_list] WHERE patient_no=#{id}
+</select>
+    <select id="selectForListOne"  resultMap="BaseResultMapListOne">
+        SELECT
+	[patient_no],
+	x.[department_id],
+	[compose_item_no],
+	x.[item_no],
+	y.item_name,
+	x.[result_class_id],
+	[pe_result],
+	[is_abnormity],
+	[abort_reason_id],
+	[operator_id],
+	[operate_date],
+	[result_flag],
+	[normal_up],
+	[normal_down],
+	[normal_print],
+	[report_operator_id],
+	[report_check_operator_id],
+	[report_date]
+FROM
+	[HospDataV9].[dbo].[pe_report_department_detail] x,
+	[dbo].[pe_items] y
+WHERE
+	patient_no = #{parientNo}
+AND x.item_no = y.item_no
+    </select>
+  <sql id="Base_Column_List">
+    patient_no, department_id, compose_item_no, item_no, result_class_id, pe_result, 
+    is_abnormity, abort_reason_id, operator_id, operate_date, result_flag, normal_up, 
+    normal_down, normal_print, report_operator_id, report_check_operator_id, report_date
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="com.dateupdate.com.springmvc.model.PeReportDepartmentDetailKey" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from pe_report_department_detail
+    where patient_no = #{patientNo,jdbcType=VARCHAR}
+      and department_id = #{departmentId,jdbcType=INTEGER}
+      and compose_item_no = #{composeItemNo,jdbcType=VARCHAR}
+      and item_no = #{itemNo,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="com.dateupdate.com.springmvc.model.PeReportDepartmentDetailKey">
+    delete from pe_report_department_detail
+    where patient_no = #{patientNo,jdbcType=VARCHAR}
+      and department_id = #{departmentId,jdbcType=INTEGER}
+      and compose_item_no = #{composeItemNo,jdbcType=VARCHAR}
+      and item_no = #{itemNo,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.dateupdate.com.springmvc.model.PeReportDepartmentDetail">
+    insert into pe_report_department_detail (patient_no, department_id, compose_item_no, 
+      item_no, result_class_id, pe_result, 
+      is_abnormity, abort_reason_id, operator_id, 
+      operate_date, result_flag, normal_up, 
+      normal_down, normal_print, report_operator_id, 
+      report_check_operator_id, report_date)
+    values (#{patientNo,jdbcType=VARCHAR}, #{departmentId,jdbcType=INTEGER}, #{composeItemNo,jdbcType=VARCHAR}, 
+      #{itemNo,jdbcType=VARCHAR}, #{resultClassId,jdbcType=INTEGER}, #{peResult,jdbcType=VARCHAR}, 
+      #{isAbnormity,jdbcType=BIT}, #{abortReasonId,jdbcType=INTEGER}, #{operatorId,jdbcType=INTEGER}, 
+      #{operateDate,jdbcType=TIMESTAMP}, #{resultFlag,jdbcType=INTEGER}, #{normalUp,jdbcType=DOUBLE}, 
+      #{normalDown,jdbcType=DOUBLE}, #{normalPrint,jdbcType=VARCHAR}, #{reportOperatorId,jdbcType=INTEGER}, 
+      #{reportCheckOperatorId,jdbcType=INTEGER}, #{reportDate,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.dateupdate.com.springmvc.model.PeReportDepartmentDetail">
+    insert into pe_report_department_detail
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="patientNo != null">
+        patient_no,
+      </if>
+      <if test="departmentId != null">
+        department_id,
+      </if>
+      <if test="composeItemNo != null">
+        compose_item_no,
+      </if>
+      <if test="itemNo != null">
+        item_no,
+      </if>
+      <if test="resultClassId != null">
+        result_class_id,
+      </if>
+      <if test="peResult != null">
+        pe_result,
+      </if>
+      <if test="isAbnormity != null">
+        is_abnormity,
+      </if>
+      <if test="abortReasonId != null">
+        abort_reason_id,
+      </if>
+      <if test="operatorId != null">
+        operator_id,
+      </if>
+      <if test="operateDate != null">
+        operate_date,
+      </if>
+      <if test="resultFlag != null">
+        result_flag,
+      </if>
+      <if test="normalUp != null">
+        normal_up,
+      </if>
+      <if test="normalDown != null">
+        normal_down,
+      </if>
+      <if test="normalPrint != null">
+        normal_print,
+      </if>
+      <if test="reportOperatorId != null">
+        report_operator_id,
+      </if>
+      <if test="reportCheckOperatorId != null">
+        report_check_operator_id,
+      </if>
+      <if test="reportDate != null">
+        report_date,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="patientNo != null">
+        #{patientNo,jdbcType=VARCHAR},
+      </if>
+      <if test="departmentId != null">
+        #{departmentId,jdbcType=INTEGER},
+      </if>
+      <if test="composeItemNo != null">
+        #{composeItemNo,jdbcType=VARCHAR},
+      </if>
+      <if test="itemNo != null">
+        #{itemNo,jdbcType=VARCHAR},
+      </if>
+      <if test="resultClassId != null">
+        #{resultClassId,jdbcType=INTEGER},
+      </if>
+      <if test="peResult != null">
+        #{peResult,jdbcType=VARCHAR},
+      </if>
+      <if test="isAbnormity != null">
+        #{isAbnormity,jdbcType=BIT},
+      </if>
+      <if test="abortReasonId != null">
+        #{abortReasonId,jdbcType=INTEGER},
+      </if>
+      <if test="operatorId != null">
+        #{operatorId,jdbcType=INTEGER},
+      </if>
+      <if test="operateDate != null">
+        #{operateDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="resultFlag != null">
+        #{resultFlag,jdbcType=INTEGER},
+      </if>
+      <if test="normalUp != null">
+        #{normalUp,jdbcType=DOUBLE},
+      </if>
+      <if test="normalDown != null">
+        #{normalDown,jdbcType=DOUBLE},
+      </if>
+      <if test="normalPrint != null">
+        #{normalPrint,jdbcType=VARCHAR},
+      </if>
+      <if test="reportOperatorId != null">
+        #{reportOperatorId,jdbcType=INTEGER},
+      </if>
+      <if test="reportCheckOperatorId != null">
+        #{reportCheckOperatorId,jdbcType=INTEGER},
+      </if>
+      <if test="reportDate != null">
+        #{reportDate,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.dateupdate.com.springmvc.model.PeReportDepartmentDetail">
+    update pe_report_department_detail
+    <set>
+      <if test="resultClassId != null">
+        result_class_id = #{resultClassId,jdbcType=INTEGER},
+      </if>
+      <if test="peResult != null">
+        pe_result = #{peResult,jdbcType=VARCHAR},
+      </if>
+      <if test="isAbnormity != null">
+        is_abnormity = #{isAbnormity,jdbcType=BIT},
+      </if>
+      <if test="abortReasonId != null">
+        abort_reason_id = #{abortReasonId,jdbcType=INTEGER},
+      </if>
+      <if test="operatorId != null">
+        operator_id = #{operatorId,jdbcType=INTEGER},
+      </if>
+      <if test="operateDate != null">
+        operate_date = #{operateDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="resultFlag != null">
+        result_flag = #{resultFlag,jdbcType=INTEGER},
+      </if>
+      <if test="normalUp != null">
+        normal_up = #{normalUp,jdbcType=DOUBLE},
+      </if>
+      <if test="normalDown != null">
+        normal_down = #{normalDown,jdbcType=DOUBLE},
+      </if>
+      <if test="normalPrint != null">
+        normal_print = #{normalPrint,jdbcType=VARCHAR},
+      </if>
+      <if test="reportOperatorId != null">
+        report_operator_id = #{reportOperatorId,jdbcType=INTEGER},
+      </if>
+      <if test="reportCheckOperatorId != null">
+        report_check_operator_id = #{reportCheckOperatorId,jdbcType=INTEGER},
+      </if>
+      <if test="reportDate != null">
+        report_date = #{reportDate,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where patient_no = #{patientNo,jdbcType=VARCHAR}
+      and department_id = #{departmentId,jdbcType=INTEGER}
+      and compose_item_no = #{composeItemNo,jdbcType=VARCHAR}
+      and item_no = #{itemNo,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.dateupdate.com.springmvc.model.PeReportDepartmentDetail">
+    update pe_report_department_detail
+    set result_class_id = #{resultClassId,jdbcType=INTEGER},
+      pe_result = #{peResult,jdbcType=VARCHAR},
+      is_abnormity = #{isAbnormity,jdbcType=BIT},
+      abort_reason_id = #{abortReasonId,jdbcType=INTEGER},
+      operator_id = #{operatorId,jdbcType=INTEGER},
+      operate_date = #{operateDate,jdbcType=TIMESTAMP},
+      result_flag = #{resultFlag,jdbcType=INTEGER},
+      normal_up = #{normalUp,jdbcType=DOUBLE},
+      normal_down = #{normalDown,jdbcType=DOUBLE},
+      normal_print = #{normalPrint,jdbcType=VARCHAR},
+      report_operator_id = #{reportOperatorId,jdbcType=INTEGER},
+      report_check_operator_id = #{reportCheckOperatorId,jdbcType=INTEGER},
+      report_date = #{reportDate,jdbcType=TIMESTAMP}
+    where patient_no = #{patientNo,jdbcType=VARCHAR}
+      and department_id = #{departmentId,jdbcType=INTEGER}
+      and compose_item_no = #{composeItemNo,jdbcType=VARCHAR}
+      and item_no = #{itemNo,jdbcType=VARCHAR}
+  </update>
+</mapper>
