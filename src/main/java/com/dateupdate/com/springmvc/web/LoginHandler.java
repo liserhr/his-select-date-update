@@ -7,6 +7,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpSession;
+
 
 @Controller
 public class LoginHandler {
@@ -19,16 +21,20 @@ public class LoginHandler {
         return "user-login";
     }
 
-
+    @GetMapping("/user/main/function")
+    public String userMainFunction(){
+        return "user-main-function";
+    }
 
     @PostMapping(value = "/user/login")
-    public String UserLogin(@RequestParam("UserName") String UserName, @RequestParam("PassWord") String PassWord, Model model){
+    public String UserLogin(@RequestParam("UserName") String UserName, @RequestParam("PassWord") String PassWord, Model model, HttpSession session){
         UserLoginUP up = loginService.UserLogin(UserName,PassWord);
             if (up == null ){
                 model.addAttribute("message","您输入的账户或者密码有错误");
                 return "user-login";
             }else{
-                model.addAttribute("name",up.getName());
+//                model.addAttribute("name",up.getName());
+                session.setAttribute("name", up.getName());
                 return "user-main";
             }
 
