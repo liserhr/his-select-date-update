@@ -264,9 +264,9 @@ public class JktjServiceImpl implements JktjService {
                     "\t<field name=\"ycyy\"><![CDATA[" + util.xmlOne(jktjList, "LNCT1906B") + "]]></field>  //右侧原因\n" +
                     "\t<field name=\"nwlbdb\"><![CDATA[" + util.xmlOne(jktjList, "LNCT9112") + "]]></field>  //尿微量白蛋白 \n" +
                     "\t<field name=\"DJkbs\"><![CDATA[]]></field>  //不对应\n" +
-                    "    <field name=\"GClque\"><![CDATA["+ util.xmlOne(jktjList, "LNCT1951B") + util.xmlOne(jktjList, "LNCT1951C") + util.xmlOne(jktjList, "LNCT1951D") + util.xmlOne(jktjList, "LNCT1951E") +"]]></field>  //缺齿\n" +
-                    "    <field name=\"GClqu\"><![CDATA["+ util.xmlOne(jktjList, "LNCT1951F") + util.xmlOne(jktjList, "LNCT1951G") + util.xmlOne(jktjList, "LNCT1951H") + util.xmlOne(jktjList, "LNCT1951I") +"]]></field>  //龋齿\n" +
-                    "<field name=\"GClyi\"><![CDATA["+ util.xmlOne(jktjList, "LNCT1951K") +"@"+ util.xmlOne(jktjList, "LNCT1951J") + "@"+util.xmlOne(jktjList, "LNCT1951M") +"@"+ util.xmlOne(jktjList, "LNCT1951L") +"]]></field>  //义齿(假牙)\n" +
+                    "    <field name=\"GClque\"><![CDATA["+ util.yc(util.xmlOne(jktjList, "LNCT1951C")) +"@"+ util.yc(util.xmlOne(jktjList, "LNCT1951B")) +"@"+ util.yc(util.xmlOne(jktjList, "LNCT1951E") )+"@"+ util.yc(util.xmlOne(jktjList, "LNCT1951D")) +"]]></field>  //缺齿\n" +
+                    "    <field name=\"GClqu\"><![CDATA["+ util.yc(util.xmlOne(jktjList, "LNCT1951G")) +"@"+ util.yc(util.xmlOne(jktjList, "LNCT1951F")) +"@"+ util.yc(util.xmlOne(jktjList, "LNCT1951I")) +"@"+ util.yc(util.xmlOne(jktjList, "LNCT1951H") )+"]]></field>  //龋齿\n" +
+                    "<field name=\"GClyi\"><![CDATA["+ util.yc(util.xmlOne(jktjList, "LNCT1951K") )+"@"+ util.yc(util.xmlOne(jktjList, "LNCT1951J")) + "@"+util.yc(util.xmlOne(jktjList, "LNCT1951M")) +"@"+ util.yc(util.xmlOne(jktjList, "LNCT1951L")) +"]]></field>  //义齿(假牙)\n" +
                     "<field name=\"Ysqmzz\"><![CDATA["+getDocutorName(id)+"]]></field>  //医师签名-症状\n" +
                     "<field name=\"Ysqm_zz\"><![CDATA["+getDocutorName(id)+"]]></field>  //医师签名-症状\n" +
                     "</subrow>   "+
@@ -491,9 +491,9 @@ public class JktjServiceImpl implements JktjService {
                    "\t<field name=\"ycyy\"><![CDATA[" + util.xmlOne(jktjList, "LNCT1906B") + "]]></field>  //右侧原因\n" +
                    "\t<field name=\"nwlbdb\"><![CDATA[" + util.xmlOne(jktjList, "LNCT9112") + "]]></field>  //尿微量白蛋白 \n" +
                    "\t<field name=\"DJkbs\"><![CDATA[]]></field>  //不对应\n" +
-                   "    <field name=\"GClque\"><![CDATA["+ util.xmlOne(jktjList, "LNCT1951B") + util.xmlOne(jktjList, "LNCT1951C") + util.xmlOne(jktjList, "LNCT1951D") + util.xmlOne(jktjList, "LNCT1951E") +"]]></field>  //缺齿\n" +
-                   "    <field name=\"GClqu\"><![CDATA["+ util.xmlOne(jktjList, "LNCT1951F") + util.xmlOne(jktjList, "LNCT1951G") + util.xmlOne(jktjList, "LNCT1951H") + util.xmlOne(jktjList, "LNCT1951I") +"]]></field>  //龋齿\n" +
-                   "<field name=\"GClyi\"><![CDATA["+ util.xmlOne(jktjList, "LNCT1951K") +"@"+ util.xmlOne(jktjList, "LNCT1951J") + "@"+util.xmlOne(jktjList, "LNCT1951M") +"@"+ util.xmlOne(jktjList, "LNCT1951L") +"]]></field>  //义齿(假牙)\n" +
+                   "    <field name=\"GClque\"><![CDATA["+ util.yc(util.xmlOne(jktjList, "LNCT1951C")) +"@"+ util.yc(util.xmlOne(jktjList, "LNCT1951B")) +"@"+ util.yc(util.xmlOne(jktjList, "LNCT1951E") )+"@"+ util.yc(util.xmlOne(jktjList, "LNCT1951D")) +"]]></field>  //缺齿\n" +
+                   "    <field name=\"GClqu\"><![CDATA["+ util.yc(util.xmlOne(jktjList, "LNCT1951G")) +"@"+ util.yc(util.xmlOne(jktjList, "LNCT1951F")) +"@"+ util.yc(util.xmlOne(jktjList, "LNCT1951I")) +"@"+ util.yc(util.xmlOne(jktjList, "LNCT1951H") )+"]]></field>  //龋齿\n" +
+                   "<field name=\"GClyi\"><![CDATA["+ util.yc(util.xmlOne(jktjList, "LNCT1951K") )+"@"+ util.yc(util.xmlOne(jktjList, "LNCT1951J")) + "@"+util.yc(util.xmlOne(jktjList, "LNCT1951M")) +"@"+ util.yc(util.xmlOne(jktjList, "LNCT1951L")) +"]]></field>  //义齿(假牙)\n" +
                    "<field name=\"Ysqmzz\"><![CDATA["+getDocutorName(id)+"]]></field>  //医师签名-症状\n" +
                    "<field name=\"Ysqm_zz\"><![CDATA["+getDocutorName(id)+"]]></field>  //医师签名-症状\n" +
                    "</subrow>   "+
