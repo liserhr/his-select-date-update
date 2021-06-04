@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html  xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<script type="text/javascript" th:src="@{/static/jquery/jquery-2.1.1.min.js}"></script>
+<script type="text/javascript" th:src="@{/static/jquery/jquery.pagination.js}"></script>
+<script type="text/javascript">
+$(function(){
+    $("#searchbutton").click(function () {
+        var id = $("#searchinput").val();
+        var result = $.ajax({
+            "url":"/get/jktj/xml",
+            "type":"post",
+            "data":{
+               "id":id
+            },
+            "async":false,
+            "dataType":"json"
+    });
+        $("#something").text(result.responseText);
+
+    })
+})
+</script>
+<style>
+    #something{
+        width: 100%;
+        height: 1000px;
+        border: solid 7px black;
+    }
+</style>
+<body>
+<input id="searchinput" type="text"/>
+<button type="button" id="searchbutton" >生成该人的健康体检xml</button>
+<br/>
+<textarea id="something" ></textarea>
+</body>
+</html>
