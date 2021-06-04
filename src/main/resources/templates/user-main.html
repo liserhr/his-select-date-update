@@ -1,11 +1,170 @@
 <!DOCTYPE html>
 <html  xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <title>主页面</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Hugo 0.83.1">
+    <title>信息上传系统</title>
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/navbars/">
+
+
+
+    <!-- Bootstrap core CSS -->
+    <link href="../static/assets/dist/css/bootstrap.min.css" rel="stylesheet">
+
+
+    <style>
+        .bd-placeholder-img {
+            font-size: 1.125rem;
+            text-anchor: middle;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            user-select: none;
+        }
+
+        @media (min-width: 768px) {
+            .bd-placeholder-img-lg {
+                font-size: 3.5rem;
+            }
+        }
+        .bd-placeholder-img {
+            font-size: 1.125rem;
+            text-anchor: middle;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            user-select: none;
+        }
+
+        @media (min-width: 768px) {
+            .bd-placeholder-img-lg {
+                font-size: 3.5rem;
+            }
+        }
+        #sidebar{
+            float: left;
+        }
+    </style>
+
+
+    <!-- Custom styles for this template -->
+    <link href="../static/css/navbar.css" rel="stylesheet">
 </head>
 <body>
-<h1>登陆成功</h1>
-<p th:text="${name}"></p>
+<script src="../static/assets/dist/js/bootstrap.bundle.min.js"></script>
+<script src="../static/js/sidebars.js"></script>
+
+<main>
+    <nav class="navbar navbar-expand-sm navbar-dark bg-dark" aria-label="Third navbar example">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">信息上传系统</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample03" aria-controls="navbarsExample03" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarsExample03">
+                <ul class="navbar-nav me-auto mb-2 mb-sm-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#">根据体检号</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">根据身份证号码</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="dropdown03" data-bs-toggle="dropdown" aria-expanded="false">根据日期时间</a>
+                        <ul class="dropdown-menu" aria-labelledby="dropdown03">
+                            <li><a class="dropdown-item" href="#">今天一天</a></li>
+                            <li><a class="dropdown-item" href="#">昨天一天</a></li>
+                            <li><a class="dropdown-item" href="#">自定义开始时间和结束时间</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                <form>
+                    <input class="form-control" type="text" placeholder="Search" aria-label="Search">
+                </form>
+            </div>
+        </div>
+    </nav>
+</main>
+<div id="sidebar">
+<main>
+    <h1 class="visually-hidden">信息上传</h1>
+
+    <div class="d-flex flex-column flex-shrink-0 p-3 text-white bg-dark" style="width: 280px;">
+        <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
+            <svg class="bi me-2" width="40" height="32"><use xlink:href="#bootstrap"/></svg>
+            <span class="fs-4">体检信息上传</span>
+        </a>
+        <hr>
+        <ul class="nav nav-pills flex-column mb-auto">
+            <li class="nav-item">
+                <a href="#" class="nav-link active" aria-current="page">
+                    <svg class="bi me-2" width="16" height="16"><use xlink:href="#home"/></svg>
+                    老年人随访上传
+                </a>
+            </li>
+            <li>
+                <a href="#" class="nav-link text-white">
+                    <svg class="bi me-2" width="16" height="16"><use xlink:href="#speedometer2"/></svg>
+                    老年人中医体质上传
+                </a>
+            </li>
+            <li>
+                <a href="#" class="nav-link text-white">
+                    <svg class="bi me-2" width="16" height="16"><use xlink:href="#table"/></svg>
+                    签名照片上传
+                </a>
+            </li>
+            <li>
+                <a href="#" class="nav-link text-white">
+                    <svg class="bi me-2" width="16" height="16"><use xlink:href="#grid"/></svg>
+                    签名照片批量上传
+                </a>
+            </li>
+            <li>
+                <a href="#" class="nav-link text-white">
+                    <svg class="bi me-2" width="16" height="16"><use xlink:href="#people-circle"/></svg>
+                    B超，心电图上传
+                </a>
+            </li>
+            <li>
+                <a href="#" class="nav-link text-white">
+                    <svg class="bi me-2" width="16" height="16"><use xlink:href="#people-circle"/></svg>
+                    B超，心电图批量上传
+                </a>
+                <h1  class="nav-link text-white">
+                    你好，<p th:text="${name}"></p>
+                </h1>
+            </li>
+        </ul>
+        <hr>
+        <div class="dropdown">
+            <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
+                <p th:text="${name}"></p>
+            </a>
+            <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownUser1">
+                <li><hr class="dropdown-divider"></li>
+                <li><a class="dropdown-item" href="#">退出登录</a></li>
+            </ul>
+        </div>
+    </div>
+
+
+
+    <div class="b-example-divider"></div>
+</main>
+</div>
+
+<main>
+<p>主页面，请选择日期和时间
+</p>
+</main>
+
+
+<script src="../static/assets/dist/js/bootstrap.bundle.min.js"></script>
+
+
 </body>
 </html>

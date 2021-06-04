@@ -2,14 +2,10 @@ package com.dateupdate.com.springmvc.web;
 
 import com.dateupdate.com.springmvc.model.UserLoginUP;
 import com.dateupdate.com.springmvc.service.api.LoginService;
-import com.sun.scenario.effect.impl.sw.sse.SSEBlend_SRC_OUTPeer;
-import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-
-import javax.servlet.http.HttpSession;
 
 
 @Controller
