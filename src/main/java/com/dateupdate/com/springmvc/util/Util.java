@@ -539,12 +539,36 @@ public class Util {
 
     // 症状
     public String zz(String test){
+        StringBuffer str =  new StringBuffer();
+        StringBuffer c =  new StringBuffer();
         String [] a =test.split(",");
-        for(String b : a){
-            if (b=="25"){
-                b="99";
+        for(int i = 0;i<a.length;i++){
+            if (a[i] .equals("25")){
+
+                a[i]="99";
             }
+
         }
-        return   a.toString();
+        for (int i=0;i<a.length;i++){
+            str.append(a[i]+",");
+
+        }
+        String str1 = str.toString();
+        char[] chars = str1.toCharArray();
+        int num1 = chars.length-1-1;
+        for (int i=0;i<=num1;i++){
+            c.append(chars[i]);
+        }
+
+        return c.toString();
+    }
+
+    // 牙齿
+    public String yc(String str){
+        if (str==null || str.equals("") || str.equals(" ") ){
+            return "0";
+        }
+        return str;
+
     }
 }
