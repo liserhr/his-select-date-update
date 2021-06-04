@@ -28,7 +28,6 @@ public class JktjHandler {
     @RequestMapping("/get/jktj/xml")
     public String getXml(String id){
         String xml = jktjService.getXml(id);
-        System.out.println(xml);
         return xml;
     }
 
