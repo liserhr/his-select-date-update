@@ -27,7 +27,6 @@ public class LoginHandler {
 
     @PostMapping(value = "/user/login")
     public String UserLogin(@RequestParam("UserName") String UserName, @RequestParam("PassWord") String PassWord, Model model){
-        System.out.println(UserName+PassWord);
         UserLoginUP up = loginService.UserLogin(UserName,PassWord);
             if (up == null ){
                 model.addAttribute("message","您输入的账户或者密码有错误");

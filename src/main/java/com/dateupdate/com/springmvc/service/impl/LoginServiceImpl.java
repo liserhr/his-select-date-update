@@ -15,7 +15,6 @@ public class LoginServiceImpl implements LoginService {
 
     @Override
     public UserLoginUP UserLogin(String username, String passsord) {
-        System.out.println(username);
         UserLoginUP up  = userLoginMapper.selectPassword(username);
         if (up == null){
             return null;
