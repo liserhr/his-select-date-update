@@ -1,40 +1,190 @@
 <!DOCTYPE html>
-<html  xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
 <script type="text/javascript" th:src="@{/static/jquery/jquery-2.1.1.min.js}"></script>
 <script type="text/javascript" th:src="@{/static/jquery/jquery.pagination.js}"></script>
+<link th:href="@{/static/bootstrap-5.0.1-dist/css/bootstrap.css}" rel="stylesheet">
 <script type="text/javascript">
-$(function(){
-    $("#searchbutton").click(function () {
-        var id = $("#searchinput").val();
-        var result = $.ajax({
-            "url":"/get/jktj/xml",
-            "type":"post",
-            "data":{
-               "id":id
-            },
-            "async":false,
-            "dataType":"json"
-    });
-        $("#something").text(result.responseText);
+    $(function () {
+        // 获取健康体检xml
+        $("#getjktjbutton").click(function () {
+            var id = $("#searchinput").val();
+            var result = $.ajax({
+                "url": "/user/get/jktj/xml",
+                "type": "post",
+                "data": {
+                    "id": id
+                },
+                "async": false,
+                "dataType": "json"
+            });
+            $("#something").text(result.responseText);
 
+        });
+
+        // 发送健康体检表
+        $("#sendjktjbutton").click(function () {
+            var id = $("#searchinput").val();
+            var result = $.ajax({
+                "url": "/user/send/jktj/xml",
+                "type": "post",
+                "data": {
+                    "id": id
+                },
+                "async": false,
+                "dataType": "json"
+            });
+            alert(result.responseText);
+        });
+
+        // 生成老年人随访表
+        $("#getlnrsfbutton").click(function () {
+            var id = $("#searchinput").val();
+            var result = $.ajax({
+                "url": "/user/get/lnrsf/xml",
+                "type": "post",
+                "data": {
+                    "id": id
+                },
+                "async": false,
+                "dataType": "json"
+            });
+            $("#something").text(result.responseText);
+        });
+
+        // 上传老年人随访表
+        $("#sendlnrsfbutton").click(function () {
+            var id = $("#searchinput").val();
+            var result = $.ajax({
+                "url": "/user/send/lnrsf/xml",
+                "type": "post",
+                "data": {
+                    "id": id
+                },
+                "async": false,
+                "dataType": "json"
+            });
+            alert(result.responseText);
+        });
+
+        // 生成老年人中医体质表
+        $("#getlnrzytzbutton").click(function () {
+            var id = $("#searchinput").val();
+            var result = $.ajax({
+                "url": "/user/get/lnrzytz/xml",
+                "type": "post",
+                "data": {
+                    "id": id
+                },
+                "async": false,
+                "dataType": "json"
+            });
+            $("#something").text(result.responseText);
+        });
+
+        // 上传老年人中医体质表
+        $("#sendlnrzytzbutton").click(function () {
+            var id = $("#searchinput").val();
+            var result = $.ajax({
+                "url": "/user/send/lnrzytz/xml",
+                "type": "post",
+                "data": {
+                    "id": id
+                },
+                "async": false,
+                "dataType": "json"
+            });
+            alert(result.responseText);
+        });
+
+        // 生成医生签名照片
+        $("#getqmphotobutton").click(function () {
+            var id = $("#searchinput").val();
+            var result = $.ajax({
+                "url": "/user/get/photo/xml",
+                "type": "post",
+                "data": {
+                    "id": id
+                },
+                "async": false,
+                "dataType": "json"
+            });
+            $("#something").text(result.responseText);
+        });
+
+        // 上传医生签名照片
+        $("#sendqmphotobutton").click(function () {
+            var id = $("#searchinput").val();
+            var result = $.ajax({
+                "url": "/user/send/photo/xml",
+                "type": "post",
+                "data": {
+                    "id": id
+                },
+                "async": false,
+                "dataType": "json"
+            });
+            alert(result.responseText);
+        });
+        // 生成B超心电图照片
+        $("#getbxphotobutton").click(function () {
+            var id = $("#searchinput").val();
+            var result = $.ajax({
+                "url": "/user/get/BX/xml",
+                "type": "post",
+                "data": {
+                    "id": id
+                },
+                "async": false,
+                "dataType": "json"
+            });
+            $("#something").text(result.responseText);
+        });
+
+        // 上传B超心电图照片
+        $("#sendbxphotobutton").click(function () {
+            var id = $("#searchinput").val();
+            var result = $.ajax({
+                "url": "/user/send/BX/xml",
+                "type": "post",
+                "data": {
+                    "id": id
+                },
+                "async": false,
+                "dataType": "json"
+            });
+            alert(result.responseText);
+        });
     })
-})
 </script>
 <style>
-    #something{
+    #something {
         width: 100%;
         height: 1000px;
         border: solid 7px black;
     }
 </style>
 <body>
-<input id="searchinput" type="text"/>
-<button type="button" id="searchbutton" >生成该人的健康体检xml</button>
-<br/>
-<textarea id="something" ></textarea>
+<input id="searchinput" type="text"  class="form-control input-lg" placeholder="请输入体检号"/><br/>
+
+<button type="button" class="btn btn-success" id="getjktjbutton">生成该人的健康体检xml</button>
+<button type="button" class="btn btn-info" id="sendjktjbutton">上传该人健康体检表</button><br/>
+
+<button type="button" class="btn btn-success" id="getlnrsfbutton">生成该人老年人随访表</button>
+<button type="button" class="btn btn-info" id="sendlnrsfbutton">上传该人老年人随访表</button><br/>
+
+<button type="button" class="btn btn-success" id="getlnrzytzbutton">生成该人老年人中医体制表</button>
+<button type="button" class="btn btn-info" id="sendlnrzytzbutton">上传该人老年人中医体质表</button><br/>
+
+<button type="button" class="btn btn-success" id="getqmphotobutton">生成该人医生签名表</button>
+<button type="button" class="btn btn-info" id="sendqmphotobutton">上传该人医生签名表</button><br/>
+
+<button type="button" class="btn btn-success"  id="getbxphotobutton">生成该人B超心电图表</button>
+<button type="button" class="btn btn-info" id="sendbxphotobutton">上传该人B超心电图表</button><br/>
+
+<textarea id="something"></textarea>
 </body>
 </html>

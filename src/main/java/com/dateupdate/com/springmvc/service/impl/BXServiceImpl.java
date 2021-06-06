@@ -25,6 +25,9 @@ public class BXServiceImpl implements BXService {
     public String getBXxml(String id) {
         Util util = new Util();
         List<BX> list  = xbMapper.getXB(id);
+        if (list == null ){
+            return "没有查询到该人老年人中医体质数据";
+        }
         String xml ="<XMLTOPERSONS return=\\TRUE\\ biaoshi=\\2\\ value=\\0\\ username=\\370705B100090012\\  prgid=\\370705B10009\\>\n" +
                 "<row name=\\T_DA_JKDA_RKXZL\\>\n" +
                 "<field name=\\DSfzh\\><![CDATA["+peReportDepartmentDetailMapper.getPersionCardTime(id).getPerson_no()+"]]></field>//身份证\n" +
@@ -52,6 +55,9 @@ public class BXServiceImpl implements BXService {
     public String sendBXxml(String id) {
         Util util = new Util();
         List<BX> list  = xbMapper.getXB(id);
+        if (list == null){
+            return "没有查询到该人老年人中医体质数据";
+        }
         String xml ="<XMLTOPERSONS return=\\TRUE\\ biaoshi=\\2\\ value=\\0\\ username=\\370705B100090012\\  prgid=\\370705B10009\\>\n" +
                 "<row name=\\T_DA_JKDA_RKXZL\\>\n" +
                 "<field name=\\DSfzh\\><![CDATA["+peReportDepartmentDetailMapper.getPersionCardTime(id).getPerson_no()+"]]></field>//身份证\n" +

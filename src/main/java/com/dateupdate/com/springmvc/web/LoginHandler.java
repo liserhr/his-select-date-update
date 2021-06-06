@@ -16,6 +16,12 @@ public class LoginHandler {
     @Autowired
     private LoginService loginService;
 
+    @GetMapping("/user/out")
+    public String ligout(HttpSession session){
+        session.removeAttribute("name");
+        return "user-login";
+    }
+
     @GetMapping(value = "/user/login")
     public String Login(){
         return "user-login";
@@ -24,6 +30,10 @@ public class LoginHandler {
     @GetMapping("/user/main/function")
     public String userMainFunction(){
         return "user-main-function";
+    }
+    @GetMapping("/user/main/function1")
+    public String userMainFunction1(){
+        return "user-main-function1";
     }
 
     @PostMapping(value = "/user/login")
@@ -34,7 +44,7 @@ public class LoginHandler {
                 return "user-login";
             }else{
 //                model.addAttribute("name",up.getName());
-                session.setAttribute("name", up.getName());
+                session.setAttribute("name", up);
                 return "user-main";
             }
 

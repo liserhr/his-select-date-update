@@ -41,6 +41,9 @@ public class DocutorQzImageImpl implements DocutorQzImageService {
         // 首先查询出你出想要的数据
         List<DQzPhoto> list = doctorImageMapper.getQzPhoto(id);
         List<Qzbr> list1 = doctorImageMapper.Qzbr(id);
+        if (list == null && list1 == null){
+            return "没有查询到该人老年人中医体质数据";
+        }
         // 将查询的数据经过util或者字符串拼接生成想要的xml
             String xml = "<?xml version=\"1.0\" encoding=\"UTF-8\" ?>\n" +
                     "<XMLTOPERSONS retrun=\"TRUE\" value=\"0\" username=\"370705B100090012\" prgid=\"370705B10009\" biaoshi=\"2\">\n" +
@@ -63,6 +66,9 @@ public class DocutorQzImageImpl implements DocutorQzImageService {
         // 首先查询出你出想要的数据
         List<DQzPhoto> list = doctorImageMapper.getQzPhoto(id);
         List<Qzbr> list1 = doctorImageMapper.Qzbr(id);
+        if (list == null && list1 == null){
+            return "没有查询到该人老年人中医体质数据";
+        }
         // 将查询的数据经过util或者字符串拼接生成想要的xml
         String xml = "<?xml version=\"1.0\" encoding=\"UTF-8\" ?>\n" +
                 "<XMLTOPERSONS retrun=\"TRUE\" value=\"0\" username=\"370705B100090012\" prgid=\"370705B10009\" biaoshi=\"2\">\n" +

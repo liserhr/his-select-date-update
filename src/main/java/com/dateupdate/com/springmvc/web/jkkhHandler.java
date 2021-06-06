@@ -11,7 +11,7 @@ public class jkkhHandler {
     @Autowired
     private JkkhService jkkhService;
 
-    @RequestMapping("/get/jkkh/xml")
+    @RequestMapping("/user/get/jkkh/xml")
     public String getJkkh(String id){
         return jkkhService.getJkkh(id);
     }

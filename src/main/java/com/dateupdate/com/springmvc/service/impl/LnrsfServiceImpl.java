@@ -29,6 +29,9 @@ public class LnrsfServiceImpl implements LnrsfService {
     @Override
     public String getLnrsfXml(String id) {
         Lnrsf list = getLnrsfInfo(id);
+        if (list == null ){
+            return "没有查询到该人老年人中医体质数据";
+        }
         if (list !=null ){
             int number = util.xmlLnrsf(list, 1) +util.xmlLnrsf(list, 2) +util.xmlLnrsf(list, 3) +util.xmlLnrsf(list, 4) +util.xmlLnrsf(list, 5);
         String xml = "<?xml version=\"1.0\" encoding=\"UTF-8\" ?>\n" +
@@ -58,6 +61,9 @@ public class LnrsfServiceImpl implements LnrsfService {
     @Override
     public String sendLnrsfXml(String id) {
         Lnrsf list = getLnrsfInfo(id);
+        if (list == null ){
+            return "没有查询到该人老年人中医体质数据";
+        }
         if (list!= null){
             int number = util.xmlLnrsf(list, 1) +util.xmlLnrsf(list, 2) +util.xmlLnrsf(list, 3) +util.xmlLnrsf(list, 4) +util.xmlLnrsf(list, 5);
         String xml = "<?xml version=\"1.0\" encoding=\"UTF-8\" ?>\n" +
