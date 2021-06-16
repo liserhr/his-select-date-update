@@ -114,10 +114,11 @@
 
         /*获取ids,批量删除*/
         $("#sendjktjlist").click(function () {
-            var ids = '';
+            var ids = new Array();
             $('input:checkbox').each(function () {
                 if (this.checked == true && this.id != null && this.id != "" && this.id != " ") {
-                    ids += this.id + ',';
+                    // ids += this.id + ',';
+                    ids.push(this.id)
                 }
 
             });
@@ -126,27 +127,27 @@
                 alert("请选择需要上传的用户！")
 
             } else {
-                $.ajax({
-                    "url": "/user/send/jktjlist/xml",
-                    "type": "post",
-                    "data": {
-                        "ids": ids
-                    },
-                    "async": false,
-                    "dataType": "json",
-                    success: function (res) {
-                        var message = "";
-                        for (var i = 0; i < res.length; i++) {
-                            message += res[i] + "\n";
-                        }
+                var message = "";
+                for (var i = 0 ;i < ids.length ; i++ ) {
+                     var res = $.ajax({
+                        "url": "/user/send/jktj/xml",
+                        "type": "post",
+                        "data": {
+                            "id": ids[i]
+                        },
+                        "async": false,
+                        "dataType": "json",
+                    });
+                    message+=  res.responseText+ "\n"
+                    if ((i+1) === ids.length){
                         confirm(message);
                     }
-                });
+                }
             }
 
         });
 
-        $("#sendlnrsdlist").click(function () {
+        $("#sendlnrsflist").click(function () {
             var ids = '';
             $('input:checkbox').each(function () {
                 if (this.checked == true && this.id != null && this.id != "" && this.id != " ") {
@@ -317,7 +318,8 @@
                         var removeBtn2 = "<button id='" + roleId + "' href='/user/send/BX/xml?id="+roleId+"' type='button' class='btn btn-success btn-xs bxphotoBtn'>上传B超，心电图</button>";
 
                         var buttonTd = "<td>" + checkBtn + " " + pencilBtn + " " + removeBtn + " " + removeBtn1 + " " + removeBtn2 + "</td>";
-                        var tr = "<tr>" + number + checkboxId + roleNameTd + tjh + buttonTd + "</tr>";
+                        var test = "<td>上传成功</td>";
+                        var tr = "<tr>" + number + checkboxId + roleNameTd + tjh + buttonTd + test+  "</tr>";
 
                         $("#rolePageBody").append(tr);
                     }
@@ -373,6 +375,21 @@
 
 
 </script>
+<style>
+    #myProgress {
+        width: 100%;
+        background-color: #ddd;
+    }
+
+    #myBar {
+        width: 10%;
+        height: 30px;
+        background-color: #4CAF50;
+        text-align: center;
+        line-height: 30px;
+        color: white;
+    }
+</style>
 
 <body>
 
@@ -387,6 +404,9 @@
 
 
 <button id="submit" type="button" class="btn btn-primary">检索期间的人物</button>
+<div id="myProgress">
+    <div id="myBar">10%</div>
+</div>
 <br/>
 ————————————————————————————————————————————————————————————————————————————————————
 <br/>
@@ -407,6 +427,7 @@
         <td>名字</td>
         <td>体检号码</td>
         <td>操作</td>
+        <td>上传结果</td>
     </tr>
     </thead>
     <tbody id="rolePageBody">

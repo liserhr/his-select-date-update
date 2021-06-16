@@ -14,7 +14,7 @@
         </commentGenerator>
         <!-- 配置数据库连接信息 -->
         <jdbcConnection driverClass="com.microsoft.sqlserver.jdbc.SQLServerDriver"
-                        connectionURL="jdbc:sqlserver://11.53.0.26:1433;DatabaseName=HospDataV9"
+                        connectionURL="jdbc:sqlserver://11.53.0.43:1433;DatabaseName=HospDataV9"
                         userId="sa"
                         password="sasasa">
         </jdbcConnection>
@@ -38,7 +38,7 @@
             <property name="enableSubPackages" value="false" />
         </javaClientGenerator>
         <!-- 数据库表名及对应的 Java 模型类名 -->
-        <table tableName="pe_report_department_images" domainObjectName="list"
+        <table tableName="pe_report_department_images" domainObjectName="image"
                enableCountByExample="false"
                enableUpdateByExample="false"
                enableDeleteByExample="false"

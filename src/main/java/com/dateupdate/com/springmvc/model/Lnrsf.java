@@ -83,7 +83,11 @@ public class Lnrsf {
     }
 
     public void setOperatorId(Integer operatorId) {
-        this.operatorId = operatorId;
+        if (operatorId == null ) {
+            this.operatorId = 0;
+        }else {
+            this.operatorId = operatorId;
+        }
     }
 
     public Timestamp getOperateDate() {

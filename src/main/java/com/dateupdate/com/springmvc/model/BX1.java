@@ -6,7 +6,12 @@ public class BX1 {
     private byte[] image;
 
     public byte[] getImage() {
-        return image;
+        if (image != null){
+            return image;
+        }else{
+            return new byte[]{};
+        }
+
     }
 
     public void setImage(byte[] image) {

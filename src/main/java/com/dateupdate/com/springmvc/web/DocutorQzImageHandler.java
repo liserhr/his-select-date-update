@@ -1,5 +1,7 @@
 package com.dateupdate.com.springmvc.web;
+import com.dateupdate.com.springmvc.model.DQzPhoto;
 import com.dateupdate.com.springmvc.model.DoctorImage;
+import com.dateupdate.com.springmvc.model.DoctorImageWithBLOBs;
 import com.dateupdate.com.springmvc.service.api.DocutorQzImageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -16,8 +18,8 @@ public class DocutorQzImageHandler {
     @Autowired
     private DocutorQzImageService docutorQzImageService;
 
-    @RequestMapping("/user/test")
-    public String test (Integer id){
+    @RequestMapping("/user/asdasd/test")
+    public List<DQzPhoto> test (String id){
         return docutorQzImageService.test(id);
     }
 

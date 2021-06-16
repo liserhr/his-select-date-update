@@ -61,17 +61,17 @@
         select operation_sort,sign_name,sign_data from emr_sign_list where  operation_no = #{id}
     </select>
     <select id="getQzPhoto" parameterType="java.lang.String" resultMap="getQzPhoto">
-        SELECT
+  SELECT
 	ps_persons.sign_image,
-	pe_register_items.compose_item_no,
+	pe_report_department_detail01.compose_item_no,
 	acc_users.user_name
 FROM
-	pe_register_items,
+	pe_report_department_detail01,
 	ps_persons,
 	acc_users
 WHERE
 	patient_no = #{id}
-AND pe_register_items.operator_id = acc_users.serial_no
+AND pe_report_department_detail01.operator_id = acc_users.serial_no
 AND acc_users.login_name = ps_persons.work_no;
     </select>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="ResultMapWithBLOBs">

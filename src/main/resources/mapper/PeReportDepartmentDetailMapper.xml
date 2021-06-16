@@ -62,7 +62,7 @@ AND pe_register_list.operator_id = acc_users.serial_no;
 
 
 <select id="getPersionCardTime" parameterType="java.lang.String" resultMap="getPersionCardTime">
-    SELECT [person_no],[pe_date],[operator_id] FROM [HospDataV9].[dbo].[pe_register_list] WHERE patient_no=#{id}
+    SELECT [person_no],[pe_date],[operator_id] FROM [HospDataV90].[dbo].[pe_register_list] WHERE patient_no=#{id}
 </select>
     <select id="selectForListOne"  resultMap="BaseResultMapListOne">
         SELECT
@@ -85,7 +85,7 @@ AND pe_register_list.operator_id = acc_users.serial_no;
 	[report_check_operator_id],
 	[report_date]
 FROM
-	[HospDataV9].[dbo].[pe_report_department_detail] x,
+	[HospDataV90].[dbo].[pe_report_department_detail] x,
 	[dbo].[pe_items] y
 WHERE
 	patient_no = #{parientNo}

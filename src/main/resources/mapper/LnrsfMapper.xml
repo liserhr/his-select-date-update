@@ -20,10 +20,11 @@
         SELECT user_name from acc_users WHERE serial_no = #{id}
     </select>
     <select id="getCard" parameterType="java.lang.String" resultType="java.lang.String">
-            SELECT [person_no] FROM [HospDataV9].[dbo].[pe_register_list] WHERE patient_no=#{id}
+            SELECT [person_no] FROM [HospDataV90].[dbo].[pe_register_list] WHERE patient_no=#{id}
     </select>
     <select id="getLnrsfInfo" parameterType="java.lang.String" resultMap="BaseResultMap">
-        select * from pe_care_ablity_list WHERE patient_no = #{id}
+        select patient_no, item_value_1, item_value_2, item_value_3, item_value_4, item_value_5,
+    status , operator_id,operate_date  from pe_care_ablity_list WHERE patient_no = #{id}
     </select>
     <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
         select

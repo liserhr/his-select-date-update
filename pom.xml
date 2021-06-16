@@ -10,6 +10,7 @@
     </parent>
     <groupId>com.dateupdate.com</groupId>
     <artifactId>date-select-update</artifactId>
+    <packaging>jar</packaging>
     <version>1.0.0</version>
     <name>date-select-update</name>
     <description>Demo project for Spring Boot</description>
@@ -49,12 +50,15 @@
             <scope>test</scope>
         </dependency>
 
-
-        <!-- thymeleaf网页解析 -->
         <dependency>
-                <groupId>net.sourceforge.nekohtml</groupId>
-                <artifactId>nekohtml</artifactId>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-tomcat</artifactId>
+            <scope>provided</scope>
         </dependency>
+
+
+
+
 
 
 
@@ -71,7 +75,22 @@
 
 
     <build>
+
         <plugins>
+
+
+
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-resources-plugin</artifactId>
+                        <version>3.1.0</version>
+                    </plugin>
+                    <plugin>
+                        <groupId>org.springframework.boot</groupId>
+                        <artifactId>spring-boot-maven-plugin</artifactId>
+                    </plugin>
+
+
             <!--mybatis 代码自动生成插件-->
             <plugin>
                 <groupId>org.mybatis.generator</groupId>

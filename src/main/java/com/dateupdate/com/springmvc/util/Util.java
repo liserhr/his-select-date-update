@@ -104,7 +104,7 @@ public class Util {
         //System.out.println(result.length() == 0);
                   if (result .length() != 0){
                       a.append("\t<subrow name=\"T_TJ_ZYZLQKB\">  //住院治疗情况,包括住院史和家庭病床史\n" +
-                              "\t\t<field name=\"ZType\"><![CDATA[未设置]]></field>  //添加和删除住院史的控制字段\n" +
+                              "\t\t<field name=\"ZType\"><![CDATA[1]]></field>  //1.住院情况2.家庭病床史，添加和删除住院史的控制字段\n" +
                               "\t\t<field name=\"ZRyjcrq\"><![CDATA[" + xmlOne(list, "LNCT9400") + "]]></field>  //入院日期\n" +
                               "\t\t<field name=\"ZCyccrq\"><![CDATA[" + xmlOne(list, "LNCT9401") + "]]></field>  //出院日期\n" +
                               "\t\t<field name=\"ZYuanyin\"><![CDATA[" + xmlOne(list, "LNCT9403") + "]]></field>  //原 因\n" +
@@ -116,7 +116,7 @@ public class Util {
                   String result1 = xmlOne(list,"LNCT9406")+xmlOne(list,"LNCT9407")+xmlOne(list,"LNCT9408")+xmlOne(list,"LNCT9409")+xmlOne(list,"LNCT94010");
                 if (result1.length() != 0){
                     a.append( "\t<subrow name=\"T_TJ_ZYZLQKB\">  //住院治疗情况,包括住院史和家庭病床史\n" +
-                            "\t\t<field name=\"ZType\"><![CDATA[未设置]]></field>  //添加和删除住院史的控制字段\n" +
+                            "\t\t<field name=\"ZType\"><![CDATA[1]]></field>  //添加和删除住院史的控制字段\n" +
                             "\t\t<field name=\"ZRyjcrq\"><![CDATA[" + xmlOne(list, "LNCT9406") + "]]></field>  //入院日期\n" +
                             "\t\t<field name=\"ZCyccrq\"><![CDATA[" + xmlOne(list, "LNCT9407") + "]]></field>  //出院日期\n" +
                             "\t\t<field name=\"ZYuanyin\"><![CDATA[" + xmlOne(list, "LNCT9408") + "]]></field>  //原 因\n" +
@@ -172,7 +172,7 @@ public class Util {
         }
         String result6 = xmlOne(list,"LNCT9441");
         if (result6 .length() != 0){
-            a.append("\t<subrow name=\"T_TJ_YYQKB5\">  //主要用药情况5\n" +
+            a.append("\t<subrow name=\"T_TJ_YYQKB\">  //主要用药情况5\n" +
                     "\t\t<field name=\"YYwmc\"><![CDATA[" + xmlOne(list, "LNCT9441") + "]]></field>  //药物名称\n" +
                     "\t\t<field name=\"YYongfa\"><![CDATA[" +xmlOne(list, "LNCT9442") + "]]></field>  //用法\n" +
                     "\t\t<field name=\"YYongl\"><![CDATA[" + xmlOne(list, "LNCT9443") + "]]></field>  //用量\n" +
@@ -184,7 +184,7 @@ public class Util {
 
         String result7 = xmlOne(list,"LNCT9446");
         if (result7.length() != 0){
-            a.append( "\t<subrow name=\"T_TJ_YYQKB6\">  //主要用药情况6\n" +
+            a.append( "\t<subrow name=\"T_TJ_YYQKB\">  //主要用药情况6\n" +
                     "\t\t<field name=\"YYwmc\"><![CDATA[" + xmlOne(list, "LNCT9446") + "]]></field>  //药物名称\n" +
                     "\t\t<field name=\"YYongfa\"><![CDATA[" + xmlOne(list, "LNCT9447") + "]]></field>  //用法\n" +
                     "\t\t<field name=\"YYongl\"><![CDATA[" + xmlOne(list, "LNCT9448") + "]]></field>  //用量\n" +
@@ -282,11 +282,15 @@ public class Util {
         BASE64Encoder encoder = new BASE64Encoder();
         return data != null ? encoder.encode(data) : "";
     }
-    public static String getBase64(byte[] bytes){
+    public static String getBase641(byte[] bytes){
         String baes =getImageString(bytes);
         byte[] erjinzhi = baes.getBytes();
         String base64 =getImageString(erjinzhi);
         return base64;
+    }
+    public static String getBase64(byte[] bytes){
+        String baes =getImageString(bytes);
+        return baes;
     }
     // 生成UUID的方法
     public String UUID(){
@@ -298,128 +302,128 @@ public class Util {
     public String PhotoXml(List<DQzPhoto> list  ){
         StringBuffer str = new StringBuffer();
         for (DQzPhoto  photo : list){
-         if (photo.getXMName().equals("LNCT1001") && photo.getSignImage() != null){
+         if (photo.getXMName().equals("LNCT1001") && photo.getSignImage() != null){// 无
             str.append("<subrow name=\"T_PW_PICFILE\">\n" +
                     "                <field name=\"filename\">"+UUID()+"</field>\n" +
                     "                <field name=\"signcolumn\">ysqm_zz</field>\n" +
-                    "                <field name=\"picture\">"+getBase64(photo.getSignImage())+"</field>\n" +
+                    "                <field name=\"picture\">"+getImageString(photo.getSignImage())+"</field>\n" +
                     "            </subrow>\n"+
                     "<subrow name=\"T_PW_PICFILE\">\n" +
                             "                <field name=\"filename\">"+UUID()+"</field>\n" +
                             "                <field name=\"signcolumn\">ysqm_zqgn</field>\n" +
-                            "                <field name=\"picture\">"+getBase64(photo.getSignImage())+"</field>\n" +
+                            "                <field name=\"picture\">"+getImageString(photo.getSignImage())+"</field>\n" +
                             "            </subrow>\n"+
                     "<subrow name=\"T_PW_PICFILE\">\n" +
                     "                <field name=\"filename\">"+UUID()+"</field>\n" +
                     "                <field name=\"signcolumn\">ysqm_fzjc_qt</field>\n" +
-                    "                <field name=\"picture\">"+getBase64(photo.getSignImage())+"</field>\n" +
+                    "                <field name=\"picture\">"+getImageString(photo.getSignImage())+"</field>\n" +
                     "            </subrow>\n"+
                     "<subrow name=\"T_PW_PICFILE\">\n" +
                     "                <field name=\"filename\">"+UUID()+"</field>\n" +
                     "                <field name=\"signcolumn\">ysqm_ct_yd</field>\n" +
-                    "                <field name=\"picture\">"+getBase64(photo.getSignImage())+"</field>\n" +
+                    "                <field name=\"picture\">"+getImageString(photo.getSignImage())+"</field>\n" +
                     "            </subrow>\n"+
                     "<subrow name=\"T_PW_PICFILE\">\n" +
                     "                <field name=\"filename\">"+UUID()+"</field>\n" +
                     "                <field name=\"signcolumn\">ysqm_ct_cg</field>\n" +
-                    "                <field name=\"picture\">"+getBase64(photo.getSignImage())+"</field>\n" +
+                    "                <field name=\"picture\">"+getImageString(photo.getSignImage())+"</field>\n" +
                     "            </subrow>\n"+
                     "<subrow name=\"T_PW_PICFILE\">\n" +
                     "                <field name=\"filename\">"+UUID()+"</field>\n" +
                     "                <field name=\"signcolumn\">ysqm_ct_qt</field>\n" +
-                    "                <field name=\"picture\">"+getBase64(photo.getSignImage())+"</field>\n" +
+                    "                <field name=\"picture\">"+getImageString(photo.getSignImage())+"</field>\n" +
                     "            </subrow>\n");
          }
-            if (photo.getXMName().equals("LNCT1000") && photo.getSignImage() != null){
+            if (photo.getXMName().equals("LNCT1000") && photo.getSignImage() != null){//有
                 str.append("<subrow name=\"T_PW_PICFILE\">\n" +
                         "                <field name=\"filename\">"+UUID()+"</field>\n" +
                         "                <field name=\"signcolumn\">ysqm_ybqk</field>\n" +
-                        "                <field name=\"picture\">"+getBase64(photo.getSignImage())+"</field>\n" +
+                        "                <field name=\"picture\">"+getImageString(photo.getSignImage())+"</field>\n" +
                         "            </subrow>\n");
             }
-            if (photo.getXMName().equals("LNCT1023") && photo.getSignImage() != null){
+            if (photo.getXMName().equals("LNCT1023") && photo.getSignImage() != null){//有
                 str.append("<subrow name=\"T_PW_PICFILE\">\n" +
                         "                <field name=\"filename\">"+UUID()+"</field>\n" +
                         "                <field name=\"signcolumn\">ysqm_shfs</field>\n" +
-                        "                <field name=\"picture\">"+getBase64(photo.getSignImage())+"</field>\n" +
+                        "                <field name=\"picture\">"+getImageString(photo.getSignImage())+"</field>\n" +
                         "            </subrow>\n");
             }
-            if (photo.getXMName().equals("LNCT1011") && photo.getSignImage() != null){
+            if (photo.getXMName().equals("LNCT1011") && photo.getSignImage() != null){// 没查出来
                 str.append("<subrow name=\"T_PW_PICFILE\">\n" +
                         "                <field name=\"filename\">"+UUID()+"</field>\n" +
                         "                <field name=\"signcolumn\">ysqm_fzjc_1to5</field>\n" +
-                        "                <field name=\"picture\">"+getBase64(photo.getSignImage())+"</field>\n" +
+                        "                <field name=\"picture\">"+getImageString(photo.getSignImage())+"</field>\n" +
                         "            </subrow>\n");
             }
-            if (photo.getXMName().equals("LNCT1012") && photo.getSignImage() != null){
+            if (photo.getXMName().equals("LNCT1012") && photo.getSignImage() != null){//没查出来
                 str.append("<subrow name=\"T_PW_PICFILE\">\n" +
                         "                <field name=\"filename\">"+UUID()+"</field>\n" +
                         "                <field name=\"signcolumn\">ysqm_fzjc_6to12</field>\n" +
-                        "                <field name=\"picture\">"+getBase64(photo.getSignImage())+"</field>\n" +
+                        "                <field name=\"picture\">"+getImageString(photo.getSignImage())+"</field>\n" +
                         "            </subrow>\n");
             }
             if (photo.getXMName().equals("LNCT1006") && photo.getSignImage() != null){
                 str.append("<subrow name=\"T_PW_PICFILE\">\n" +
                         "                <field name=\"filename\">"+UUID()+"</field>\n" +
                         "                <field name=\"signcolumn\">ysqm_fzjc_xdt</field>\n" +
-                        "                <field name=\"picture\">"+getBase64(photo.getSignImage())+"</field>\n" +
+                        "                <field name=\"picture\">"+getImageString(photo.getSignImage())+"</field>\n" +
                         "            </subrow>\n");
             }
             if (photo.getXMName().equals("LNCT1014") && photo.getSignImage() != null){
                 str.append("<subrow name=\"T_PW_PICFILE\">\n" +
                         "                <field name=\"filename\">"+UUID()+"</field>\n" +
                         "                <field name=\"signcolumn\">ysqm_fzjc_xbxxp</field>\n" +
-                        "                <field name=\"picture\">"+getBase64(photo.getSignImage())+"</field>\n" +
+                        "                <field name=\"picture\">"+getImageString(photo.getSignImage())+"</field>\n" +
                         "            </subrow>\n");
             }
-            if (photo.getXMName().equals("LNCT1015") && photo.getSignImage() != null){
+            if (photo.getXMName().equals("LNCT1015") && photo.getSignImage() != null){//无
                 str.append("<subrow name=\"T_PW_PICFILE\">\n" +
                         "                <field name=\"filename\">"+UUID()+"</field>\n" +
                         "                <field name=\"signcolumn\">ysqm_fzjc_fbbc</field>\n" +
-                        "                <field name=\"picture\">"+getBase64(photo.getSignImage())+"</field>\n" +
+                        "                <field name=\"picture\">"+getImageString(photo.getSignImage())+"</field>\n" +
                         "            </subrow>\n"+
                         "<subrow name=\"T_PW_PICFILE\">\n" +
                         "                <field name=\"filename\">"+UUID()+"</field>\n" +
                         "                <field name=\"signcolumn\">ysqm_fzjc_bc_qt</field>\n" +
-                        "                <field name=\"picture\">"+getBase64(photo.getSignImage())+"</field>\n" +
+                        "                <field name=\"picture\">"+getImageString(photo.getSignImage())+"</field>\n" +
                         "            </subrow>\n");
             }
             if (photo.getXMName().equals("LNCT1016") && photo.getSignImage() != null){
                 str.append("<subrow name=\"T_PW_PICFILE\">\n" +
                         "                <field name=\"filename\">"+UUID()+"</field>\n" +
                         "                <field name=\"signcolumn\">ysqm_fzjc_gjtp</field>\n" +
-                        "                <field name=\"picture\">"+getBase64(photo.getSignImage())+"</field>\n" +
+                        "                <field name=\"picture\">"+getImageString(photo.getSignImage())+"</field>\n" +
                         "            </subrow>\n");
             }
             if (photo.getXMName().equals("LNCT1019") && photo.getSignImage() != null){
                 str.append("<subrow name=\"T_PW_PICFILE\">\n" +
                         "                <field name=\"filename\">"+UUID()+"</field>\n" +
                         "                <field name=\"signcolumn\">ysqm_jkwtzyzl</field>\n" +
-                        "                <field name=\"picture\">"+getBase64(photo.getSignImage())+"</field>\n" +
+                        "                <field name=\"picture\">"+getImageString(photo.getSignImage())+"</field>\n" +
                         "            </subrow>\n"+
                         "<subrow name=\"T_PW_PICFILE\">\n" +
                         "                <field name=\"filename\">"+UUID()+"</field>\n" +
                         "                <field name=\"signcolumn\">ysqm_zyyyqk</field>\n" +
-                        "                <field name=\"picture\">"+getBase64(photo.getSignImage())+"</field>\n" +
+                        "                <field name=\"picture\">"+getImageString(photo.getSignImage())+"</field>\n" +
                         "            </subrow>\n");
             }
             if (photo.getXMName().equals("LNCT1021") && photo.getSignImage() != null){
                 str.append("<subrow name=\"T_PW_PICFILE\">\n" +
                         "                <field name=\"filename\">"+UUID()+"</field>\n" +
                         "                <field name=\"signcolumn\">ysqm_fmyghyfjzs</field>\n" +
-                        "                <field name=\"picture\">"+getBase64(photo.getSignImage())+"</field>\n" +
+                        "                <field name=\"picture\">"+getImageString(photo.getSignImage())+"</field>\n" +
                         "            </subrow>\n");
             }
             if (photo.getXMName().equals("LNCT1022") && photo.getSignImage() != null){
                 str.append("<subrow name=\"T_PW_PICFILE\">\n" +
                         "                <field name=\"filename\">"+UUID()+"</field>\n" +
                         "                <field name=\"signcolumn\">ysqm_jkpj</field>\n" +
-                        "                <field name=\"picture\">"+getBase64(photo.getSignImage())+"</field>\n" +
+                        "                <field name=\"picture\">"+getImageString(photo.getSignImage())+"</field>\n" +
                         "            </subrow>\n"+
                         "<subrow name=\"T_PW_PICFILE\">\n" +
                         "                <field name=\"filename\">"+UUID()+"</field>\n" +
                         "                <field name=\"signcolumn\">ysqm_jkzd</field>\n" +
-                        "                <field name=\"picture\">"+getBase64(photo.getSignImage())+"</field>\n" +
+                        "                <field name=\"picture\">"+getImageString(photo.getSignImage())+"</field>\n" +
                         "            </subrow>\n");
             }
         }
@@ -429,24 +433,24 @@ public class Util {
     public String Qzbr(List<Qzbr> list){
         StringBuffer str = new StringBuffer();
         for (Qzbr photo : list){
-            if (photo.getName().equals("PATIENT") && photo.getSignData() != null){
+            if (photo.getSignName().equals("PATIENT") && photo.getSignData() != null){
                 str.append("<subrow name=\"T_PW_PICFILE\">\n" +
                         "                <field name=\"filename\">"+UUID()+"</field>\n" +
                         "                <field name=\"signcolumn\">jgfk_brqz</field>\n" +
-                        "                <field name=\"picture\">"+new BASE64Encoder().encode(photo.getSignData().getBytes())+"</field>\n" +
+                        "                <field name=\"picture\">"+photo.getSignData()+"</field>\n" +
                         "            </subrow>\n");
-            }if (photo.getName().equals("PATIENT2") && photo.getSignData() != null){
+            }if (photo.getSignName().equals("PATIENT2") && photo.getSignData() != null){
                 str.append("<subrow name=\"T_PW_PICFILE\">\n" +
                         "                <field name=\"filename\">"+UUID()+"</field>\n" +
                         "                <field name=\"signcolumn\">jgfk_jsqz</field>\n" +
-                        "                <field name=\"picture\">"+new BASE64Encoder().encode(photo.getSignData().getBytes())+"</field>\n" +
+                        "                <field name=\"picture\">"+photo.getSignData()+"</field>\n" +
                         "            </subrow>\n");
             }
-            if (photo.getName().equals("DOCTOR") && photo.getSignData() != null){
+            if (photo.getSignName().equals("DOCTOR") && photo.getSignData() != null){
                 str.append("<subrow name=\"T_PW_PICFILE\">\n" +
                         "                <field name=\"filename\">"+UUID()+"</field>\n" +
                         "                <field name=\"signcolumn\">jgfk_fkrqz</field>\n" +
-                        "                <field name=\"picture\">"+new BASE64Encoder().encode(photo.getSignData().getBytes())+"</field>\n" +
+                        "                <field name=\"picture\">"+ photo.getSignData()+"</field>\n" +
                         "            </subrow>\n");
             }
         }
@@ -481,27 +485,28 @@ public class Util {
         }
         if (num1.size() != 0) {
             for (int i = 0; i < num1.size(); i++) {
-                str.append("<subrow name=\\T_PW_PICFILE\\>\n" +
-                        "<field name=\\DGrdabh\\><![CDATA[370704010080001102]]></field>\n" +
-                        "<field name=\\filename\\><![CDATA[" + id + "bc" + (i+1) + "]]></field>//文件名称\n" +
-                        "<field name=\\tablename\\><![CDATA[T_JK_JKTJ]]></field>//表名\n" +
-                        "<field name=\\signcolumn\\><![CDATA[bctp]]></field>文件类型名  B超图片\n" +
-                        "<field name=\\picture\\><![CDATA[" + getBase64(num1.get(i).getImageData()) + "]]></field>//文件64码\n" +
+                str.append("<subrow name=\"T_PW_PICFILE\">\n" +
+                        "<field name=\"DGrdabh\"><![CDATA[]]></field>\n" +
+                        "<field name=\"filename\"><![CDATA[" + id + "bc" + (i+1) + "]]></field>//文件名称\n" +
+                        "<field name=\"tablename\"><![CDATA[T_JK_JKTJ]]></field>//表名\n" +
+                        "<field name=\"signcolumn\"><![CDATA[bctp]]></field>文件类型名  B超图片\n" +
+                        "<field name=\"picture\"><![CDATA[" + getImageString(num1.get(i).getImageData()) + "]]></field>//文件64码\n" +
                         "        </subrow>\n");
             }
         }
         if (num2.size() != 0) {
             for (int i = 0; i < num1.size(); i++) {
 
-                str.append("<subrow name=\\T_PW_PICFILE\\>\n" +
-                        "<field name=\\DGrdabh\\><![CDATA[370704010080001102]]></field>\n" +
-                        "<field name=\\filename\\><![CDATA[" + id + "xdt" + (i+1) + "]]></field>//文件名称\n" +
-                        "<field name=\\tablename\\><![CDATA[T_JK_JKTJ]]></field>//表名\n" +
-                        "<field name=\\signcolumn\\><![CDATA[xdttp]]></field>文件类型名  心电图图片\n" +
-                        "<field name=\\picture\\><![CDATA[" + getBase64(num2.get(i).getImageData()) + "]]></field>//文件64码\n" +
+                str.append("<subrow name=\"T_PW_PICFILE\">\n" +
+                        "<field name=\"DGrdabh\"><![CDATA[]]></field>\n" +
+                        "<field name=\"filename\"><![CDATA[" + id + "xdt" + (i+1) + "]]></field>//文件名称\n" +
+                        "<field name=\"tablename\"><![CDATA[T_JK_JKTJ]]></field>//表名\n" +
+                        "<field name=\"signcolumn\"><![CDATA[xdttp]]></field>文件类型名  心电图图片\n" +
+                        "<field name=\"picture\"><![CDATA[" + getImageString(num2.get(i).getImageData()) + "]]></field>//文件64码\n" +
                         "        </subrow>\n");
             }
         }
+
 
         return str.toString();
     }
@@ -570,5 +575,42 @@ public class Util {
         }
         return str;
 
+    }
+
+    public String yesno(String str ){
+        if ("有异常".equals(str)){
+            return "2";
+        }else{
+            return "1";
+        }
+    }
+
+
+    public String yesno2(String lnct1931) {
+        if ("无".equals(lnct1931)){
+            return "1";
+        }else{
+            return  "2";
+
+        }
+    }
+
+    public String shizhiall(String str ){
+        if ("否".equals(str)){
+            return "";
+        }else {
+            if("是".equals(str)) {
+                return "1";
+            }else {
+                return "2";
+            }
+        }
+    }
+
+    public String xdt(String xdt){
+        if ("9".equals(xdt)||"99".equals(xdt) ){
+            xdt = "2";
+        }
+        return  xdt;
     }
 }

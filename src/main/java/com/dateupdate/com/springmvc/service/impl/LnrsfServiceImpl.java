@@ -1,6 +1,7 @@
 package com.dateupdate.com.springmvc.service.impl;
 
 import com.dateupdate.com.springmvc.mapper.LnrsfMapper;
+import com.dateupdate.com.springmvc.mapper.PeReportDepartmentDetailMapper;
 import com.dateupdate.com.springmvc.model.CardTimeDocutor;
 import com.dateupdate.com.springmvc.model.Lnrsf;
 import com.dateupdate.com.springmvc.service.api.LnrsfService;
@@ -18,6 +19,9 @@ public class LnrsfServiceImpl implements LnrsfService {
     @Autowired
     private LnrsfMapper lnrsfMapper;
 
+    @Autowired
+    private PeReportDepartmentDetailMapper peReportDepartmentDetailMapper;
+
     Util util =  new Util();
 
 
@@ -32,6 +36,19 @@ public class LnrsfServiceImpl implements LnrsfService {
         if (list == null ){
             return "没有查询到该人老年人中医体质数据";
         }
+        String docutorName = "";
+        if (getLnrsfInfo(id) == null ) {
+            docutorName = "";
+        }else{
+            System.out.println(getLnrsfInfo(id));
+            System.out.println(id);
+            int did = getLnrsfInfo(id).getOperatorId();
+            if (getDocutorName(did) == null){
+                docutorName = "";
+            } else {
+                docutorName = getDocutorName(did);
+            }
+        }
         if (list !=null ){
             int number = util.xmlLnrsf(list, 1) +util.xmlLnrsf(list, 2) +util.xmlLnrsf(list, 3) +util.xmlLnrsf(list, 4) +util.xmlLnrsf(list, 5);
         String xml = "<?xml version=\"1.0\" encoding=\"UTF-8\" ?>\n" +
@@ -45,8 +62,8 @@ public class LnrsfServiceImpl implements LnrsfService {
                 "            <field name=\"rcpf\"><![CDATA[" + util.xmlLnrsf(list, 4) + "]]></field>//如厕评分\n" +
                 "            <field name=\"hdpf\"><![CDATA[" + util.xmlLnrsf(list, 5) + "]]></field>//活动评分\n" +
                 "            <field name=\"zpf\"><![CDATA["  + number + "]]></field>//总评分\n" +
-                "            <field name=\"happentime\"><![CDATA[" + util.Datenyr(list.getOperateDate()) + "]]></field>//填表时间\n" +
-                "            <field name=\"GSfys\"><![CDATA[" + getDocutorName(getLnrsfInfo(id).getOperatorId()) + "]]></field>//医生签名\n" +
+                "            <field name=\"happentime\"><![CDATA[" + util.Datenyr(peReportDepartmentDetailMapper.getPersionCardTime(id).getPe_date()) + "]]></field>//填表时间\n" +
+                "            <field name=\"GSfys\"><![CDATA[" + docutorName + "]]></field>//医生签名\n" +
                 "            <field name=\"GXcsfmb\"><![CDATA[" + "体检合格"+ "]]></field>\n" +
                 "        </subrow>\n" +
                 "        //下次随访目标\n" +
@@ -64,6 +81,20 @@ public class LnrsfServiceImpl implements LnrsfService {
         if (list == null ){
             return "没有查询到该人老年人中医体质数据";
         }
+        String docutorName = "";
+        if (getLnrsfInfo(id) == null ) {
+            docutorName = "";
+
+        }else{
+            System.out.println(getLnrsfInfo(id));
+            System.out.println(id);
+            int did = getLnrsfInfo(id).getOperatorId();
+            if (getDocutorName(did) == null){
+                docutorName = "";
+            } else {
+               docutorName = getDocutorName(did);
+            }
+        }
         if (list!= null){
             int number = util.xmlLnrsf(list, 1) +util.xmlLnrsf(list, 2) +util.xmlLnrsf(list, 3) +util.xmlLnrsf(list, 4) +util.xmlLnrsf(list, 5);
         String xml = "<?xml version=\"1.0\" encoding=\"UTF-8\" ?>\n" +
@@ -77,8 +108,8 @@ public class LnrsfServiceImpl implements LnrsfService {
                 "            <field name=\"rcpf\"><![CDATA[" + util.xmlLnrsf(list, 4) + "]]></field>//如厕评分\n" +
                 "            <field name=\"hdpf\"><![CDATA[" + util.xmlLnrsf(list, 5) + "]]></field>//活动评分\n" +
                 "            <field name=\"zpf\"><![CDATA["  + number + "]]></field>//总评分\n" +
-                "            <field name=\"happentime\"><![CDATA[" + util.Datenyr(list.getOperateDate()) + "]]></field>//填表时间\n" +
-                "            <field name=\"GSfys\"><![CDATA[" + getDocutorName(getLnrsfInfo(id).getOperatorId()) + "]]></field>//医生签名\n" +
+                "            <field name=\"happentime\"><![CDATA[" + util.Datenyr(peReportDepartmentDetailMapper.getPersionCardTime(id).getPe_date()) + "]]></field>//填表时间\n" +
+                "            <field name=\"GSfys\"><![CDATA[" + docutorName + "]]></field>//医生签名\n" +
                 "            <field name=\"GXcsfmb\"><![CDATA[" + "体检合格"+ "]]></field>\n" +
                 "        </subrow>\n" +
                 "        //下次随访目标\n" +

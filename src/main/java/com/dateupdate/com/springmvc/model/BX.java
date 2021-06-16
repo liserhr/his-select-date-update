@@ -26,7 +26,7 @@ public class BX {
     public String toString() {
         return "BX{" +
                 "departmentId=" + departmentId +
-                ", imageDate=" + Arrays.toString(imageDate) +
+                ", imageDat|||||||||" + Arrays.toString(imageDate) +
                 '}';
     }
 }

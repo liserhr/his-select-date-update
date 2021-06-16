@@ -13,11 +13,12 @@
     <select id="getXB" parameterType="java.lang.String" resultMap="ResultMapWithBLOBs">
         select department_id,image_data from pe_report_department_images where patient_no = #{id}
     </select>
+
     <select id="Zjphoto" parameterType="java.lang.String" resultMap="xb1" >
         SELECT
-	[photo]
+	photo
 FROM
-	[HospDataV9].[dbo].[pe_register_photo]
+	[HospDataV90].[dbo].[pe_register_photo]
 	where patient_no=#{id}
     </select>
 </mapper>

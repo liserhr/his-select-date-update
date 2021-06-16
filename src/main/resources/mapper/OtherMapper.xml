@@ -7,7 +7,8 @@
    </resultMap>
 
     <select id="gettjh" parameterType="java.lang.String" resultMap="gettjh">
-        SELECT  patient_name,patient_no from pe_register_list where  pe_date BETWEEN #{timestart,jdbcType=VARCHAR} AND #{timeout,jdbcType=VARCHAR}
+        SELECT  patient_name,patient_no from pe_register_list where  pe_date BETWEEN #{timestart,jdbcType=VARCHAR} AND #{timeout,jdbcType=VARCHAR} ORDER BY
+        patient_no DESC
     </select>
 
 </mapper>

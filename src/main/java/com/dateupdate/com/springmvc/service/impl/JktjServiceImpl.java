@@ -49,6 +49,7 @@ public class JktjServiceImpl implements JktjService {
 
     @Override
     public String getXml(String id) {
+        System.out.println(id);
         // 首先将数据库里面的数据取出来
         List<ListOne>  jktjList = peReportDepartmentDetailMapper.selectForListOne(id);
 
@@ -136,7 +137,7 @@ public class JktjServiceImpl implements JktjService {
                     "\t<field name=\"hbsag\"><![CDATA[" + util.xmlOne(jktjList, "LNCTA2134") + "]]></field>  // 乙型肝炎表面抗原 1.阴性;2.阳性;\n" +
                     "\t<field name=\"GYand\"><![CDATA[" + util.number(util.xmlOne(jktjList, "LNCT1959")) + "]]></field>  // 眼 底 1.正常;2.异常;\n" +
                     "\t<field name=\"GYandyi\"><![CDATA[" + util.xmlOne(jktjList, "LNCT1959B") + "]]></field>  //眼底异常  和字段GYand有关系，当为2时，使用此字段\n" +
-                    "\t<field name=\"GXindt\"><![CDATA[" + util.number(util.xmlOne(jktjList, "LNCT8000")) + "]]></field>  // 心电图 1.正常;2.异常; \n" +
+                    "\t<field name=\"GXindt\"><![CDATA[" + util.xdt(util.number(util.xmlOne(jktjList, "LNCT8000"))) + "]]></field>  // 心电图 1.正常;2.异常; \n" +
                     "\t<field name=\"GXindtyi\"><![CDATA[" + util.xmlOne(jktjList, "LNCT8000B") + "]]></field>  //心电图异常填写  和字段GXindt有关系，当为2时，使用此字段\n" +
                     "\t<field name=\"GXiongp\"><![CDATA[]]></field>  // 胸部X线片 1.正常;2.异常;\n" +
                     "\t<field name=\"GXiongpyc\"><![CDATA[]]></field>  //胸部X线片异常  和字段GXiongp有关系，当为2时，使用此字段\n" +
@@ -151,7 +152,7 @@ public class JktjServiceImpl implements JktjService {
                     "\t<field name=\"field4\"><![CDATA[]]></field>  //暂时不对应\n" +
                     "\t<field name=\"GTunwei\"><![CDATA[]]></field>  //暂时不对应\n" +
                     "\t<field name=\"GYtwbz\"><![CDATA[]]></field>   //暂时不对应\n" +
-                    "\t<field name=\"GDlpl\"><![CDATA["+util.xmlOne(jktjList,"LNCT1915")+"]]></field>  // 锻炼频率 1.每天;2.每周一次以上;3.偶尔;4.不锻炼;\n" +
+                    "\t<field name=\"GDlpl\"><![CDATA["+util.number(util.xmlOne(jktjList,"LNCT1915"))+"]]></field>  // 锻炼频率 1.每天;2.每周一次以上;3.偶尔;4.不锻炼;\n" +
                     "\t<field name=\"GMcdlsj\"><![CDATA[" + util.xmlOne(jktjList, "LNCT1916") + "]]></field>  //每次锻炼时间\n" +
                     "\t<field name=\"GJcdlsj\"><![CDATA[" + util.xmlOne(jktjList, "LNCT1917") + "]]></field>  //坚持锻炼时间\n" +
                     "\t<field name=\"GDlfs\"><![CDATA[" + util.xmlOne(jktjList, "LNCT1918") + "]]></field>  //锻炼方式\n" +
@@ -168,7 +169,7 @@ public class JktjServiceImpl implements JktjService {
                     "\t<field name=\"GYnnsfyj\"><![CDATA[" + util.number(util.xmlOne(jktjList, "LNCT1929")) + "]]></field>  // 近一年内是否曾醉酒 1.是;2.否;\n" +
                     "\t<field name=\"GYjzl\"><![CDATA[" + util.number(util.xmlOne(jktjList, "LNCT1930") )+ "]]></field>  // 饮酒种类 1.白酒;2.啤酒;3.红酒;4.黄酒;99.其他;\n" +
                     "\t<field name=\"GYjzlqt\"><![CDATA[]]></field>  //其他饮酒种类   和字段GYjzl有关联，当为99时，使用此字段\n" +
-                    "\t<field name=\"GYwzybl\"><![CDATA[" + util.number(util.xmlOne(jktjList, "LNCT1931")) + "]]></field>  // 职业病危害因素接触史 1.无;2.有;\n" +
+                    "\t<field name=\"GYwzybl\"><![CDATA[" + util.yesno2(util.xmlOne(jktjList, "LNCT1931")) + "]]></field>  // 职业病危害因素接触史 1.无;2.有;\n" +
                     "\t<field name=\"GJtzy\"><![CDATA[" + util.xmlOne(jktjList, "LNCT1932") + "]]></field>  //工种  和字段GYwzybl有关联，当为3时，使用此字段\n" +
                     "\t<field name=\"GCysj\"><![CDATA[" + util.xmlOne(jktjList, "LNCT1933") + "]]></field>  //从业时间  和字段GYwzybl有关联，当为3时，使用此字段\n" +
                     "\t<field name=\"GHxp\"><![CDATA[" + util.xmlOne(jktjList, "LNCT1940") + "]]></field>  //化学物质  和字段GYwzybl有关联，当为3时，使用此字段\n" +
@@ -227,7 +228,7 @@ public class JktjServiceImpl implements JktjService {
                     "\t<field name=\"GSjxtjbqt\"><![CDATA[" + util.xmlOne(jktjList, "LNCT9305B")+"]]></field>  //神经系统疾病有时的填写\n" +
                     "\t<field name=\"GQtxtjb\"><![CDATA[" + util.number(util.xmlOne(jktjList, "LNCT9306")) + "]]></field>  // 其他系统疾病 1.未发现;2.有;\n" +
                     "\t<field name=\"GQtxtjbqt\"><![CDATA[" + util.xmlOne(jktjList, "LNCT9306B")+"]]></field>  //其他系统疾病有时填写\n" +
-                    "\t<field name=\"GJkpj\"><![CDATA[" + util.number(util.xmlOne(jktjList, "LNCT9460")) + "]]></field>  // 健康评价 1.体检无异常;2.有异常;\n" +
+                    "\t<field name=\"GJkpj\"><![CDATA[" + util.yesno(util.xmlOne(jktjList, "LNCT9460")) + "]]></field>  // 健康评价 1.体检无异常;2.有异常;\n" +
                     "\t<field name=\"GJkpjyc1\"><![CDATA[" + util.xmlOne(jktjList, "LNCT9461") + "]]></field>  //健康评价异常1  和字段GJkpj有关系，当为2时，使用此字段\n" +
                     "\t<field name=\"GJkpjyc2\"><![CDATA[" + util.xmlOne(jktjList, "LNCT9462") + "]]></field>  //健康评价异常2  和字段GJkpj有关系，当为2时，使用此字段\n" +
                     "\t<field name=\"GJkpjyc3\"><![CDATA[" + util.xmlOne(jktjList, "LNCT9463") + "]]></field>  //健康评价异常3  和字段GJkpj有关系，当为2时，使用此字段\n" +
@@ -254,7 +255,7 @@ public class JktjServiceImpl implements JktjService {
                     "\t<field name=\"lnrzlpg\"><![CDATA[" + util.number1(util.number(util.xmlOne(jktjList, "LNCT1912"))) + "]]></field>  // 老年人生活自理能力自我评估 1.可自理(0～3分);2.轻度依赖(4～8分);3.中度依赖(9～18分);4.不能自理(≥19分);\n" +
                     "\t<field name=\"fenchen\"><![CDATA[" + util.xmlOne(jktjList, "LNCT1934") + "]]></field>  //粉尘  和字段GYwzybl有关联，当为3时，使用此字段\n" +
                     "\t<field name=\"wuliyinsu\"><![CDATA[" + util.xmlOne(jktjList, "LNCT1938") + "]]></field>  //物理因素 和字段GYwzybl有关联，当为3时，使用此字段\n" +
-                    "\t<field name=\"blqita\"><![CDATA[" + util.xmlOne(jktjList, "LNCT1942") + "]]></field>  //职业病危害因素接触史 其他  和字段GYwzybl有关联，当为3时，使用此字段\n" +
+                    "\t<field name=\"blqita\"><![CDATA[]]></field>  //职业病危害因素接触史 其他  和字段GYwzybl有关联，当为3时，使用此字段\n" +
                     "\t<field name=\"fchcs\"><![CDATA[" + util.number(util.xmlOne(jktjList, "LNCT1935")) + "]]></field>  // 职业病危害因素接触史-粉尘-防护措施  1.无;2.有;  和字段GYwzybl有关联，当为3时，使用此字段\n" +
                     "\t<field name=\"wlcs\"><![CDATA[" + util.number(util.xmlOne(jktjList, "LNCT1939")) + "]]></field>  // 职业病危害因素接触史-物理因素-防护措施 1.无;2.有; 和字段GYwzybl有关联，当为3时，使用此字段\n" +
                     "\t<field name=\"blqtcs\"><![CDATA[" + util.number(util.xmlOne(jktjList,"LNCT1943")) + "]]></field>  // 职业病危害因素接触史-其他-防护措施 1.无;2.有;  和字段GYwzybl有关联，当为3时，使用此字段\n" +
@@ -280,6 +281,7 @@ public class JktjServiceImpl implements JktjService {
 
     @Override
     public String sendXml(String id) {
+        System.out.println(id);
        List<ListOne> jktjList =  peReportDepartmentDetailMapper.selectForListOne(id);
        if (jktjList.size() != 0){
 
@@ -363,7 +365,7 @@ public class JktjServiceImpl implements JktjService {
                    "\t<field name=\"hbsag\"><![CDATA[" + util.xmlOne(jktjList, "LNCTA2134") + "]]></field>  // 乙型肝炎表面抗原 1.阴性;2.阳性;\n" +
                    "\t<field name=\"GYand\"><![CDATA[" + util.number(util.xmlOne(jktjList, "LNCT1959")) + "]]></field>  // 眼 底 1.正常;2.异常;\n" +
                    "\t<field name=\"GYandyi\"><![CDATA[" + util.xmlOne(jktjList, "LNCT1959B") + "]]></field>  //眼底异常  和字段GYand有关系，当为2时，使用此字段\n" +
-                   "\t<field name=\"GXindt\"><![CDATA[" + util.number(util.xmlOne(jktjList, "LNCT8000")) + "]]></field>  // 心电图 1.正常;2.异常; \n" +
+                   "\t<field name=\"GXindt\"><![CDATA[" + util.xdt(util.number(util.xmlOne(jktjList, "LNCT8000"))) + "]]></field>  // 心电图 1.正常;2.异常; \n" +
                    "\t<field name=\"GXindtyi\"><![CDATA[" + util.xmlOne(jktjList, "LNCT8000B") + "]]></field>  //心电图异常填写  和字段GXindt有关系，当为2时，使用此字段\n" +
                    "\t<field name=\"GXiongp\"><![CDATA[]]></field>  // 胸部X线片 1.正常;2.异常;\n" +
                    "\t<field name=\"GXiongpyc\"><![CDATA[]]></field>  //胸部X线片异常  和字段GXiongp有关系，当为2时，使用此字段\n" +
@@ -378,7 +380,7 @@ public class JktjServiceImpl implements JktjService {
                    "\t<field name=\"field4\"><![CDATA[]]></field>  //暂时不对应\n" +
                    "\t<field name=\"GTunwei\"><![CDATA[]]></field>  //暂时不对应\n" +
                    "\t<field name=\"GYtwbz\"><![CDATA[]]></field>   //暂时不对应\n" +
-                   "\t<field name=\"GDlpl\"><![CDATA["+util.xmlOne(jktjList,"LNCT1915")+"]]></field>  // 锻炼频率 1.每天;2.每周一次以上;3.偶尔;4.不锻炼;\n" +
+                   "\t<field name=\"GDlpl\"><![CDATA["+util.number(util.xmlOne(jktjList,"LNCT1915"))+"]]></field>  // 锻炼频率 1.每天;2.每周一次以上;3.偶尔;4.不锻炼;\n" +
                    "\t<field name=\"GMcdlsj\"><![CDATA[" + util.xmlOne(jktjList, "LNCT1916") + "]]></field>  //每次锻炼时间\n" +
                    "\t<field name=\"GJcdlsj\"><![CDATA[" + util.xmlOne(jktjList, "LNCT1917") + "]]></field>  //坚持锻炼时间\n" +
                    "\t<field name=\"GDlfs\"><![CDATA[" + util.xmlOne(jktjList, "LNCT1918") + "]]></field>  //锻炼方式\n" +
@@ -395,7 +397,7 @@ public class JktjServiceImpl implements JktjService {
                    "\t<field name=\"GYnnsfyj\"><![CDATA[" + util.number(util.xmlOne(jktjList, "LNCT1929")) + "]]></field>  // 近一年内是否曾醉酒 1.是;2.否;\n" +
                    "\t<field name=\"GYjzl\"><![CDATA[" + util.number(util.xmlOne(jktjList, "LNCT1930") )+ "]]></field>  // 饮酒种类 1.白酒;2.啤酒;3.红酒;4.黄酒;99.其他;\n" +
                    "\t<field name=\"GYjzlqt\"><![CDATA[]]></field>  //其他饮酒种类   和字段GYjzl有关联，当为99时，使用此字段\n" +
-                   "\t<field name=\"GYwzybl\"><![CDATA[" + util.number(util.xmlOne(jktjList, "LNCT1931")) + "]]></field>  // 职业病危害因素接触史 1.无;2.有;\n" +
+                   "\t<field name=\"GYwzybl\"><![CDATA[" + util.yesno2(util.xmlOne(jktjList, "LNCT1931")) + "]]></field>  // 职业病危害因素接触史 1.无;2.有;\n" +
                    "\t<field name=\"GJtzy\"><![CDATA[" + util.xmlOne(jktjList, "LNCT1932") + "]]></field>  //工种  和字段GYwzybl有关联，当为3时，使用此字段\n" +
                    "\t<field name=\"GCysj\"><![CDATA[" + util.xmlOne(jktjList, "LNCT1933") + "]]></field>  //从业时间  和字段GYwzybl有关联，当为3时，使用此字段\n" +
                    "\t<field name=\"GHxp\"><![CDATA[" + util.xmlOne(jktjList, "LNCT1940") + "]]></field>  //化学物质  和字段GYwzybl有关联，当为3时，使用此字段\n" +
@@ -454,7 +456,7 @@ public class JktjServiceImpl implements JktjService {
                    "\t<field name=\"GSjxtjbqt\"><![CDATA[" + util.xmlOne(jktjList, "LNCT9305B")+"]]></field>  //神经系统疾病有时的填写\n" +
                    "\t<field name=\"GQtxtjb\"><![CDATA[" + util.number(util.xmlOne(jktjList, "LNCT9306")) + "]]></field>  // 其他系统疾病 1.未发现;2.有;\n" +
                    "\t<field name=\"GQtxtjbqt\"><![CDATA[" + util.xmlOne(jktjList, "LNCT9306B")+"]]></field>  //其他系统疾病有时填写\n" +
-                   "\t<field name=\"GJkpj\"><![CDATA[" + util.number(util.xmlOne(jktjList, "LNCT9460")) + "]]></field>  // 健康评价 1.体检无异常;2.有异常;\n" +
+                   "\t<field name=\"GJkpj\"><![CDATA[" + util.yesno(util.xmlOne(jktjList, "LNCT9460")) + "]]></field>  // 健康评价 1.体检无异常;2.有异常;\n" +
                    "\t<field name=\"GJkpjyc1\"><![CDATA[" + util.xmlOne(jktjList, "LNCT9461") + "]]></field>  //健康评价异常1  和字段GJkpj有关系，当为2时，使用此字段\n" +
                    "\t<field name=\"GJkpjyc2\"><![CDATA[" + util.xmlOne(jktjList, "LNCT9462") + "]]></field>  //健康评价异常2  和字段GJkpj有关系，当为2时，使用此字段\n" +
                    "\t<field name=\"GJkpjyc3\"><![CDATA[" + util.xmlOne(jktjList, "LNCT9463") + "]]></field>  //健康评价异常3  和字段GJkpj有关系，当为2时，使用此字段\n" +
@@ -481,7 +483,7 @@ public class JktjServiceImpl implements JktjService {
                    "\t<field name=\"lnrzlpg\"><![CDATA[" + util.number1(util.number(util.xmlOne(jktjList, "LNCT1912"))) + "]]></field>  // 老年人生活自理能力自我评估 1.可自理(0～3分);2.轻度依赖(4～8分);3.中度依赖(9～18分);4.不能自理(≥19分);\n" +
                    "\t<field name=\"fenchen\"><![CDATA[" + util.xmlOne(jktjList, "LNCT1934") + "]]></field>  //粉尘  和字段GYwzybl有关联，当为3时，使用此字段\n" +
                    "\t<field name=\"wuliyinsu\"><![CDATA[" + util.xmlOne(jktjList, "LNCT1938") + "]]></field>  //物理因素 和字段GYwzybl有关联，当为3时，使用此字段\n" +
-                   "\t<field name=\"blqita\"><![CDATA[" + util.xmlOne(jktjList, "LNCT1942") + "]]></field>  //职业病危害因素接触史 其他  和字段GYwzybl有关联，当为3时，使用此字段\n" +
+                   "\t<field name=\"blqita\"><![CDATA[]]></field>  //职业病危害因素接触史 其他  和字段GYwzybl有关联，当为3时，使用此字段\n" +
                    "\t<field name=\"fchcs\"><![CDATA[" + util.number(util.xmlOne(jktjList, "LNCT1935")) + "]]></field>  // 职业病危害因素接触史-粉尘-防护措施  1.无;2.有;  和字段GYwzybl有关联，当为3时，使用此字段\n" +
                    "\t<field name=\"wlcs\"><![CDATA[" + util.number(util.xmlOne(jktjList, "LNCT1939")) + "]]></field>  // 职业病危害因素接触史-物理因素-防护措施 1.无;2.有; 和字段GYwzybl有关联，当为3时，使用此字段\n" +
                    "\t<field name=\"blqtcs\"><![CDATA[" + util.number(util.xmlOne(jktjList,"LNCT1943")) + "]]></field>  // 职业病危害因素接触史-其他-防护措施 1.无;2.有;  和字段GYwzybl有关联，当为3时，使用此字段\n" +
@@ -504,7 +506,7 @@ public class JktjServiceImpl implements JktjService {
            WebService factory =  new WebService();
            WebServicePortType webServiceHttpPort = factory.getWebServiceHttpPort();
            String hello = webServiceHttpPort.dataCenterWebservice("3B86EDC086794717A76AAD14ED0A0AA6","645f9b7b405141b789359086ab5860d0",xml1);
-           return hello;
+           return id+hello;
        }
         return "你输入的用户没有数据！";
     }

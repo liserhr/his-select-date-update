@@ -26,23 +26,20 @@ public class DocutorQzImageImpl implements DocutorQzImageService {
 
 
     @Override
-    public String test(Integer id) {
-        Util util = new Util();
-        DoctorImageWithBLOBs a=  doctorImageMapper.selectByPrimaryKey(id);
-        String baes =util.getImageString(a.getSignImage());
-        byte[] erjinzhi = baes.getBytes();
-        String base64 = util.getImageString(erjinzhi);
-        return base64;
+    public List<DQzPhoto> test(String id) {
+        List<DQzPhoto> list = doctorImageMapper.getQzPhoto(id);
+        return list;
     }
 
     @Override
     public String getQzPhotoXml(String id) {
+        System.out.println(id);
         Util util = new Util();
         // 首先查询出你出想要的数据
         List<DQzPhoto> list = doctorImageMapper.getQzPhoto(id);
         List<Qzbr> list1 = doctorImageMapper.Qzbr(id);
-        if (list == null && list1 == null){
-            return "没有查询到该人老年人中医体质数据";
+        if (list.size() == 0 && list1.size() == 0 ){
+            return "没有查询到该数据";
         }
         // 将查询的数据经过util或者字符串拼接生成想要的xml
             String xml = "<?xml version=\"1.0\" encoding=\"UTF-8\" ?>\n" +
@@ -62,12 +59,13 @@ public class DocutorQzImageImpl implements DocutorQzImageService {
 
     @Override
     public String sendQzPhotoXml(String id) {
+        System.out.println(id);
         Util util = new Util();
         // 首先查询出你出想要的数据
         List<DQzPhoto> list = doctorImageMapper.getQzPhoto(id);
         List<Qzbr> list1 = doctorImageMapper.Qzbr(id);
-        if (list == null && list1 == null){
-            return "没有查询到该人老年人中医体质数据";
+        if (list.size() == 0 && list1.size() == 0 ){
+            return "没有查询到该人数据";
         }
         // 将查询的数据经过util或者字符串拼接生成想要的xml
         String xml = "<?xml version=\"1.0\" encoding=\"UTF-8\" ?>\n" +

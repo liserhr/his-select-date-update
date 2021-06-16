@@ -1,24 +1,25 @@
 package com.dateupdate.com.springmvc.model;
 
 public class Qzbr {
-    private Integer sort;
-    private String name;
+    private Integer operationSort;
+    private String signName;
     private String signData;
 
-    public Integer getSort() {
-        return sort;
+
+    public Integer getOperationSort() {
+        return operationSort;
     }
 
-    public void setSort(Integer sort) {
-        this.sort = sort;
+    public void setOperationSort(Integer operationSort) {
+        this.operationSort = operationSort;
     }
 
-    public String getName() {
-        return name;
+    public String getSignName() {
+        return signName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setSignName(String signName) {
+        this.signName = signName;
     }
 
     public String getSignData() {
@@ -32,8 +33,8 @@ public class Qzbr {
     @Override
     public String toString() {
         return "Qzbr{" +
-                "sort=" + sort +
-                ", name='" + name + '\'' +
+                "sort=" + operationSort +
+                ", name='" + signName + '\'' +
                 ", signData='" + signData + '\'' +
                 '}';
     }
