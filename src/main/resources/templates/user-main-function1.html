@@ -11,11 +11,15 @@
 <link th:href="@{/static/bootstrap-5.0.1-dist/css/bootstrap-datetimepicker.css}" rel="stylesheet">
 <script type="text/javascript" th:src="@{/static/js/bootstrap-datetimepicker.min.js}"></script>
 <script type="text/javascript" th:src="@{/static/js/bootstrap-datetimepicker.js}" charset="UTF-8"></script>
-<script type="text/javascript" th:src="@{/static/js/locales/bootstrap-datetimepicker.zh-CN.js}"
-        charset="UTF-8"></script>
+<script type="text/javascript" th:src="@{/static/js/locales/bootstrap-datetimepicker.zh-CN.js}"></script>
+<script type="text/javascript" th:src="@{/static/layui-v2.2.5/layui.js}"></script>
 <script th:src="@{/static/js/angular.min.js}"></script>
 
 <script type="text/javascript">
+    var layer = "";
+    layui.use('layer', function(){
+        layer = layui.layer;
+    });
     $(function () {
 
         /*批量选中的效果*/
@@ -122,12 +126,14 @@
                 }
 
             });
+
             console.log(ids)
             if (ids.length == null || "" == ids) {
                 alert("请选择需要上传的用户！")
 
             } else {
                 var message = "";
+                var num = 0;
                 for (var i = 0 ;i < ids.length ; i++ ) {
                      var res = $.ajax({
                         "url": "/user/send/jktj/xml",
@@ -137,11 +143,21 @@
                         },
                         "async": false,
                         "dataType": "json",
+                         success: function() {
+
+                         },
+                         error: function(){
+                             num++
+                             var widthTemp = ( num/ ids.length)*100+"%";
+                             layer.msg(widthTemp);
+                             $('#jindu').text(widthTemp)
+                         }
                     });
                     message+=  res.responseText+ "\n"
-                    if ((i+1) === ids.length){
-                        confirm(message);
-                    }
+
+                    // if ((i+1) === ids.length){
+                    //     confirm(message);
+                    // }
                 }
             }
 
@@ -376,19 +392,7 @@
 
 </script>
 <style>
-    #myProgress {
-        width: 100%;
-        background-color: #ddd;
-    }
 
-    #myBar {
-        width: 10%;
-        height: 30px;
-        background-color: #4CAF50;
-        text-align: center;
-        line-height: 30px;
-        color: white;
-    }
 </style>
 
 <body>
@@ -404,9 +408,9 @@
 
 
 <button id="submit" type="button" class="btn btn-primary">检索期间的人物</button>
-<div id="myProgress">
-    <div id="myBar">10%</div>
-</div>
+<br/>
+上传进度：<textarea id="jindu" style="width: 40px;height: 20px"></textarea>
+
 <br/>
 ————————————————————————————————————————————————————————————————————————————————————
 <br/>
